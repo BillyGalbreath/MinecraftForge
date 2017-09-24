@@ -370,11 +370,11 @@ String getVersionFromJava(File file)
 
     def out = "${minecraft.version.replace('-', '_')}-$major.$minor.$revision.$build"
 
-    if (branch && branch != 'master' && branch != 'HEAD' && branch != minecraft.version && branch != minecraft.version + '.0')
-    {
-        if (!(branch.endsWith('.x') && minecraft.version.startsWith(branch.substring(0, branch.length() -2))))
-            out += "-$branch"
-    }
+    //if (branch && branch != 'master' && branch != 'HEAD' && branch != minecraft.version && branch != minecraft.version + '.0')
+    //{
+    //    if (!(branch.endsWith('.x') && minecraft.version.startsWith(branch.substring(0, branch.length() -2))))
+    //        out += "-$branch"
+    //}
 
     return out;
 }
