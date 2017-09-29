@@ -1,0 +1,10 @@
+--- ../src-base/minecraft/net/minecraft/command/CommandGive.java
++++ ../src-work/minecraft/net/minecraft/command/CommandGive.java
+@@ -65,6 +65,7 @@
+             {
+                 entityplayer.field_70170_p.func_184148_a((EntityPlayer)null, entityplayer.field_70165_t, entityplayer.field_70163_u, entityplayer.field_70161_v, SoundEvents.field_187638_cR, SoundCategory.PLAYERS, 0.2F, ((entityplayer.func_70681_au().nextFloat() - entityplayer.func_70681_au().nextFloat()) * 0.7F + 1.0F) * 2.0F);
+                 entityplayer.field_71069_bz.func_75142_b();
++                net.minecraftforge.event.ForgeEventFactory.onItemPickup(new EntityItem(entityplayer.field_70170_p, entityplayer.field_70165_t, entityplayer.field_70163_u, entityplayer.field_70161_v, itemstack), entityplayer);
+             }
+ 
+             if (flag && itemstack.func_190926_b())
