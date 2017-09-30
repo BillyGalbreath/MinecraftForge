@@ -635,7 +635,7 @@ public class FMLCommonHandler
         if (packet.getRequestedState() == EnumConnectionState.LOGIN && (!NetworkRegistry.INSTANCE.isVanillaAccepted(Side.CLIENT) && !packet.hasFMLMarker()))
         {
             manager.setConnectionState(EnumConnectionState.LOGIN);
-            TextComponentString text = new TextComponentString("This server requires FML/Forge to be installed. Contact your server admin for more details.");
+            TextComponentString text = new TextComponentString("\u00A74This server requires FML/Forge to be installed.\n\n\u00A7ePlease visit \u00A7ahttp://pl3x.net/play \u00A7efor further instructions.");
             FMLLog.log.info("Disconnecting Player: {}", text.getUnformattedText());
             manager.sendPacket(new SPacketDisconnect(text));
             manager.closeChannel(text);
