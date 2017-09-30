@@ -159,6 +159,9 @@ public class FMLNetworkHandler
         else
         {
             FMLLog.log.info("Rejecting connection {}: {}", side, rejects);
+            if (side == Side.CLIENT) {
+                return String.format("\u00A74Your client is missing required mods.\n\n\u00A77%s\n\n\u00A7ePlease visit \u00A7ahttp://pl3x.net/play \u00A7efor further instructions.", rejects);
+            }
             return String.format("Mod rejections %s",rejects);
         }
     }
