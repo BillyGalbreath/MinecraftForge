@@ -318,7 +318,7 @@ public class NetworkDispatcher extends SimpleChannelInboundHandler<Packet<?>> im
 
     private void kickVanilla()
     {
-        kickWithMessage("\u00A74This server requires FML/Forge to be installed.\n\n\u00A7ePlease visit \u00A7ahttp://pl3x.net/play \u00A7efor further instructions.");
+        kickWithMessage("\u00A7cThis server requires FML/Forge to be installed.\n\n\u00A7ePlease visit \u00A7ahttp://pl3x.net/play \u00A7efor further instructions.");
     }
 
     private void kickWithMessage(String message)
