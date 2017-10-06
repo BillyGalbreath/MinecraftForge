@@ -1,5 +1,38 @@
 --- ../src-base/minecraft/net/minecraft/client/gui/inventory/GuiContainer.java
 +++ ../src-work/minecraft/net/minecraft/client/gui/inventory/GuiContainer.java
+@@ -31,15 +31,15 @@
+     public Container field_147002_h;
+     protected int field_147003_i;
+     protected int field_147009_r;
+-    private Slot field_147006_u;
++    protected Slot field_147006_u;
+     private Slot field_147005_v;
+-    private boolean field_147004_w;
+-    private ItemStack field_147012_x = ItemStack.field_190927_a;
+-    private int field_147011_y;
+-    private int field_147010_z;
+-    private Slot field_146989_A;
+-    private long field_146990_B;
+-    private ItemStack field_146991_C = ItemStack.field_190927_a;
++    protected boolean field_147004_w;
++    protected ItemStack field_147012_x = ItemStack.field_190927_a;
++    protected int field_147011_y;
++    protected int field_147010_z;
++    protected Slot field_146989_A;
++    protected long field_146990_B;
++    protected ItemStack field_146991_C = ItemStack.field_190927_a;
+     private Slot field_146985_D;
+     private long field_146986_E;
+     protected final Set<Slot> field_147008_s = Sets.<Slot>newHashSet();
+@@ -47,7 +47,7 @@
+     private int field_146987_F;
+     private int field_146988_G;
+     private boolean field_146995_H;
+-    private int field_146996_I;
++    protected int field_146996_I;
+     private long field_146997_J;
+     private Slot field_146998_K;
+     private int field_146992_L;
 @@ -116,6 +116,7 @@
          RenderHelper.func_74518_a();
          this.func_146979_b(p_73863_1_, p_73863_2_);
@@ -8,7 +41,13 @@
          InventoryPlayer inventoryplayer = this.field_146297_k.field_71439_g.field_71071_by;
          ItemStack itemstack = this.field_147012_x.func_190926_b() ? inventoryplayer.func_70445_o() : this.field_147012_x;
  
-@@ -180,8 +181,10 @@
+@@ -175,13 +176,15 @@
+         }
+     }
+ 
+-    private void func_146982_a(ItemStack p_146982_1_, int p_146982_2_, int p_146982_3_, String p_146982_4_)
++    protected void func_146982_a(ItemStack p_146982_1_, int p_146982_2_, int p_146982_3_, String p_146982_4_)
+     {
          GlStateManager.func_179109_b(0.0F, 0.0F, 32.0F);
          this.field_73735_i = 200.0F;
          this.field_146296_j.field_77023_b = 200.0F;
@@ -20,6 +59,15 @@
          this.field_73735_i = 0.0F;
          this.field_146296_j.field_77023_b = 0.0F;
      }
+@@ -192,7 +195,7 @@
+ 
+     protected abstract void func_146976_a(float p_146976_1_, int p_146976_2_, int p_146976_3_);
+ 
+-    private void func_146977_a(Slot p_146977_1_)
++    protected void func_146977_a(Slot p_146977_1_)
+     {
+         int i = p_146977_1_.field_75223_e;
+         int j = p_146977_1_.field_75221_f;
 @@ -239,13 +242,12 @@
  
          if (itemstack.func_190926_b() && p_146977_1_.func_111238_b())
@@ -103,6 +151,15 @@
                  {
                      this.func_184098_a(slot, k, p_146286_3_, ClickType.CLONE);
                  }
+@@ -609,7 +614,7 @@
+         this.field_147007_t = false;
+     }
+ 
+-    private boolean func_146981_a(Slot p_146981_1_, int p_146981_2_, int p_146981_3_)
++    protected boolean func_146981_a(Slot p_146981_1_, int p_146981_2_, int p_146981_3_)
+     {
+         return this.func_146978_c(p_146981_1_.field_75223_e, p_146981_1_.field_75221_f, 16, 16, p_146981_2_, p_146981_3_);
+     }
 @@ -635,7 +640,7 @@
  
      protected void func_73869_a(char p_73869_1_, int p_73869_2_) throws IOException
