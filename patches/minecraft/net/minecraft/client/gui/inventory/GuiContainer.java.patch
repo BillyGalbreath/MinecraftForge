@@ -33,15 +33,71 @@
      private long field_146997_J;
      private Slot field_146998_K;
      private int field_146992_L;
-@@ -116,6 +116,7 @@
+@@ -70,26 +70,29 @@
+ 
+     public void func_73863_a(int p_73863_1_, int p_73863_2_, float p_73863_3_)
+     {
++        drawScreen(p_73863_1_, p_73863_2_, p_73863_3_, 0);
++    }
++
++    public void drawScreen(int mouseX, int mouseY, float partialTicks, int start)
++    {
+         int i = this.field_147003_i;
+         int j = this.field_147009_r;
+-        this.func_146976_a(p_73863_3_, p_73863_1_, p_73863_2_);
++        this.func_146976_a(partialTicks, mouseX, mouseY);
+         GlStateManager.func_179101_C();
          RenderHelper.func_74518_a();
-         this.func_146979_b(p_73863_1_, p_73863_2_);
+         GlStateManager.func_179140_f();
+         GlStateManager.func_179097_i();
+-        super.func_73863_a(p_73863_1_, p_73863_2_, p_73863_3_);
++        super.func_73863_a(mouseX, mouseY, partialTicks);
          RenderHelper.func_74520_c();
-+        net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new net.minecraftforge.client.event.GuiContainerEvent.DrawForeground(this, p_73863_1_, p_73863_2_));
+         GlStateManager.func_179094_E();
+         GlStateManager.func_179109_b((float)i, (float)j, 0.0F);
+         GlStateManager.func_179131_c(1.0F, 1.0F, 1.0F, 1.0F);
+         GlStateManager.func_179091_B();
+         this.field_147006_u = null;
+-        int k = 240;
+-        int l = 240;
+         OpenGlHelper.func_77475_a(OpenGlHelper.field_77476_b, 240.0F, 240.0F);
+         GlStateManager.func_179131_c(1.0F, 1.0F, 1.0F, 1.0F);
+ 
+-        for (int i1 = 0; i1 < this.field_147002_h.field_75151_b.size(); ++i1)
++        for (int i1 = start; i1 < this.field_147002_h.field_75151_b.size(); ++i1)
+         {
+             Slot slot = this.field_147002_h.field_75151_b.get(i1);
+ 
+@@ -98,7 +101,7 @@
+                 this.func_146977_a(slot);
+             }
+ 
+-            if (this.func_146981_a(slot, p_73863_1_, p_73863_2_) && slot.func_111238_b())
++            if (this.func_146981_a(slot, mouseX, mouseY) && slot.func_111238_b())
+             {
+                 this.field_147006_u = slot;
+                 GlStateManager.func_179140_f();
+@@ -114,8 +117,9 @@
+         }
+ 
+         RenderHelper.func_74518_a();
+-        this.func_146979_b(p_73863_1_, p_73863_2_);
++        this.func_146979_b(mouseX, mouseY);
+         RenderHelper.func_74520_c();
++        net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new net.minecraftforge.client.event.GuiContainerEvent.DrawForeground(this, mouseX, mouseY));
          InventoryPlayer inventoryplayer = this.field_146297_k.field_71439_g.field_71071_by;
          ItemStack itemstack = this.field_147012_x.func_190926_b() ? inventoryplayer.func_70445_o() : this.field_147012_x;
  
-@@ -175,13 +176,15 @@
+@@ -141,7 +145,7 @@
+                 }
+             }
+ 
+-            this.func_146982_a(itemstack, p_73863_1_ - i - 8, p_73863_2_ - j - k2, s);
++            this.func_146982_a(itemstack, mouseX - i - 8, mouseY - j - k2, s);
+         }
+ 
+         if (!this.field_146991_C.func_190926_b())
+@@ -175,13 +179,15 @@
          }
      }
  
@@ -59,7 +115,7 @@
          this.field_73735_i = 0.0F;
          this.field_146296_j.field_77023_b = 0.0F;
      }
-@@ -192,7 +195,7 @@
+@@ -192,7 +198,7 @@
  
      protected abstract void func_146976_a(float p_146976_1_, int p_146976_2_, int p_146976_3_);
  
@@ -68,7 +124,7 @@
      {
          int i = p_146977_1_.field_75223_e;
          int j = p_146977_1_.field_75221_f;
-@@ -239,13 +242,12 @@
+@@ -239,13 +245,12 @@
  
          if (itemstack.func_190926_b() && p_146977_1_.func_111238_b())
          {
@@ -85,7 +141,7 @@
                  this.func_175175_a(i, j, textureatlassprite, 16, 16);
                  GlStateManager.func_179145_e();
                  flag1 = true;
-@@ -319,7 +321,7 @@
+@@ -319,7 +324,7 @@
      protected void func_73864_a(int p_73864_1_, int p_73864_2_, int p_73864_3_) throws IOException
      {
          super.func_73864_a(p_73864_1_, p_73864_2_, p_73864_3_);
@@ -94,7 +150,7 @@
          Slot slot = this.func_146975_c(p_73864_1_, p_73864_2_);
          long i = Minecraft.func_71386_F();
          this.field_146993_M = this.field_146998_K == slot && i - this.field_146997_J < 250L && this.field_146992_L == p_73864_3_;
-@@ -330,6 +332,7 @@
+@@ -330,6 +335,7 @@
              int j = this.field_147003_i;
              int k = this.field_147009_r;
              boolean flag1 = this.func_193983_c(p_73864_1_, p_73864_2_, j, k);
@@ -102,7 +158,7 @@
              int l = -1;
  
              if (slot != null)
-@@ -367,7 +370,7 @@
+@@ -367,7 +373,7 @@
                  {
                      if (this.field_146297_k.field_71439_g.field_71071_by.func_70445_o().func_190926_b())
                      {
@@ -111,7 +167,7 @@
                          {
                              this.func_184098_a(slot, l, p_73864_3_, ClickType.CLONE);
                          }
-@@ -405,7 +408,7 @@
+@@ -405,7 +411,7 @@
                          {
                              this.field_146987_F = 1;
                          }
@@ -120,7 +176,7 @@
                          {
                              this.field_146987_F = 2;
                          }
-@@ -472,10 +475,12 @@
+@@ -472,10 +478,12 @@
  
      protected void func_146286_b(int p_146286_1_, int p_146286_2_, int p_146286_3_)
      {
@@ -133,7 +189,7 @@
          int k = -1;
  
          if (slot != null)
-@@ -496,7 +501,7 @@
+@@ -496,7 +504,7 @@
                  {
                      for (Slot slot2 : this.field_147002_h.field_75151_b)
                      {
@@ -142,7 +198,7 @@
                          {
                              this.func_184098_a(slot2, slot2.field_75222_d, p_146286_3_, ClickType.QUICK_MOVE);
                          }
-@@ -583,7 +588,7 @@
+@@ -583,7 +591,7 @@
              }
              else if (!this.field_146297_k.field_71439_g.field_71071_by.func_70445_o().func_190926_b())
              {
@@ -151,7 +207,7 @@
                  {
                      this.func_184098_a(slot, k, p_146286_3_, ClickType.CLONE);
                  }
-@@ -609,7 +614,7 @@
+@@ -609,7 +617,7 @@
          this.field_147007_t = false;
      }
  
@@ -160,7 +216,7 @@
      {
          return this.func_146978_c(p_146981_1_.field_75223_e, p_146981_1_.field_75221_f, 16, 16, p_146981_2_, p_146981_3_);
      }
-@@ -635,7 +640,7 @@
+@@ -635,7 +643,7 @@
  
      protected void func_73869_a(char p_73869_1_, int p_73869_2_) throws IOException
      {
@@ -169,7 +225,7 @@
          {
              this.field_146297_k.field_71439_g.func_71053_j();
          }
-@@ -644,11 +649,11 @@
+@@ -644,11 +652,11 @@
  
          if (this.field_147006_u != null && this.field_147006_u.func_75216_d())
          {
@@ -183,7 +239,7 @@
              {
                  this.func_184098_a(this.field_147006_u, this.field_147006_u.field_75222_d, func_146271_m() ? 1 : 0, ClickType.THROW);
              }
-@@ -661,7 +666,7 @@
+@@ -661,7 +669,7 @@
          {
              for (int i = 0; i < 9; ++i)
              {
@@ -192,7 +248,7 @@
                  {
                      this.func_184098_a(this.field_147006_u, this.field_147006_u.field_75222_d, i, ClickType.SWAP);
                      return true;
-@@ -694,4 +699,18 @@
+@@ -694,4 +702,18 @@
              this.field_146297_k.field_71439_g.func_71053_j();
          }
      }
