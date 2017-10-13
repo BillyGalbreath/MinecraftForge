@@ -1,0 +1,17 @@
+--- ../src-base/minecraft/net/minecraft/network/play/server/SPacketPlayerListHeaderFooter.java
++++ ../src-work/minecraft/net/minecraft/network/play/server/SPacketPlayerListHeaderFooter.java
+@@ -41,4 +41,14 @@
+     {
+         return this.field_179702_b;
+     }
++
++    public void setHeader(ITextComponent header)
++    {
++        this.field_179703_a = header;
++    }
++
++    public void setFooter(ITextComponent footer)
++    {
++        this.field_179702_b = footer;
++    }
+ }
