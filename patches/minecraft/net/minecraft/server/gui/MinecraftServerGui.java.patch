@@ -1,5 +1,14 @@
 --- ../src-base/minecraft/net/minecraft/server/gui/MinecraftServerGui.java
 +++ ../src-work/minecraft/net/minecraft/server/gui/MinecraftServerGui.java
+@@ -51,7 +51,7 @@
+         }
+ 
+         MinecraftServerGui minecraftservergui = new MinecraftServerGui(p_120016_0_);
+-        JFrame jframe = new JFrame("Minecraft server");
++        JFrame jframe = new JFrame("Pl3xForge Server");
+         jframe.add(minecraftservergui);
+         jframe.pack();
+         jframe.setLocationRelativeTo((Component)null);
 @@ -77,6 +77,7 @@
                  System.exit(0);
              }

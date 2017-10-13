@@ -1,0 +1,20 @@
+--- ../src-base/minecraft/net/minecraft/client/gui/GuiWinGame.java
++++ ../src-work/minecraft/net/minecraft/client/gui/GuiWinGame.java
+@@ -27,7 +27,7 @@
+ {
+     private static final Logger field_146580_a = LogManager.getLogger();
+     private static final ResourceLocation field_146576_f = new ResourceLocation("textures/gui/title/minecraft.png");
+-    private static final ResourceLocation field_194401_g = new ResourceLocation("textures/gui/title/edition.png");
++    private static final ResourceLocation field_194401_g = new ResourceLocation("fml", "textures/gui/edition.png");
+     private static final ResourceLocation field_146577_g = new ResourceLocation("textures/misc/vignette.png");
+     private final boolean field_193980_h;
+     private final Runnable field_193981_i;
+@@ -199,7 +199,7 @@
+         this.func_73729_b(j, k, 0, 0, 155, 44);
+         this.func_73729_b(j + 155, k, 0, 45, 155, 44);
+         this.field_146297_k.func_110434_K().func_110577_a(field_194401_g);
+-        func_146110_a(j + 88, k + 37, 0.0F, 0.0F, 98, 14, 128.0F, 16.0F);
++        func_146110_a(j + 94, k + 30, 0.0F, 0.0F, 79, 46, 79.0F, 46.0F);
+         GlStateManager.func_179118_c();
+         int l = k + 100;
+ 

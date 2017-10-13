@@ -1,0 +1,11 @@
+--- ../src-base/minecraft/net/minecraft/server/dedicated/PropertyManager.java
++++ ../src-work/minecraft/net/minecraft/server/dedicated/PropertyManager.java
+@@ -70,7 +70,7 @@
+         try
+         {
+             fileoutputstream = new FileOutputStream(this.field_73673_c);
+-            this.field_73672_b.store(fileoutputstream, "Minecraft server properties");
++            this.field_73672_b.store(fileoutputstream, "Pl3xForge Server Properties");
+         }
+         catch (Exception exception)
+         {

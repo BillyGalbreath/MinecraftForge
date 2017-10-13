@@ -759,7 +759,7 @@ public class Loader
 
     public String getMCVersionString()
     {
-        return "Minecraft " + mccversion;
+        return "Pl3xForge " + mccversion;
     }
 
     public boolean serverStarting(Object server)

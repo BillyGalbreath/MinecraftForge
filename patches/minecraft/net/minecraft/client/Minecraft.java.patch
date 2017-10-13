@@ -86,6 +86,15 @@
          if (this.field_71474_y.field_74353_u && !this.field_71431_Q)
          {
              this.func_71352_k();
+@@ -607,7 +617,7 @@
+     private void func_175609_am() throws LWJGLException
+     {
+         Display.setResizable(true);
+-        Display.setTitle("Minecraft 1.12.2");
++        Display.setTitle("Pl3xForge 1.12.2");
+ 
+         try
+         {
 @@ -748,21 +758,23 @@
          File file2 = new File(file1, "crash-" + (new SimpleDateFormat("yyyy-MM-dd_HH.mm.ss")).format(new Date()) + "-client.txt");
          Bootstrap.func_179870_a(p_71377_1_.func_71502_e());
