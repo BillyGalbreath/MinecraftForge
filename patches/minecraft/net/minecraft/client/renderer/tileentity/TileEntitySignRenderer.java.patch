@@ -1,0 +1,31 @@
+--- ../src-base/minecraft/net/minecraft/client/renderer/tileentity/TileEntitySignRenderer.java
++++ ../src-work/minecraft/net/minecraft/client/renderer/tileentity/TileEntitySignRenderer.java
+@@ -10,6 +10,8 @@
+ import net.minecraft.tileentity.TileEntitySign;
+ import net.minecraft.util.ResourceLocation;
+ import net.minecraft.util.text.ITextComponent;
++import net.minecraft.util.text.TextComponentString;
++import net.minecraft.util.text.TextFormatting;
+ import net.minecraftforge.fml.relauncher.Side;
+ import net.minecraftforge.fml.relauncher.SideOnly;
+ 
+@@ -93,16 +95,16 @@
+                 {
+                     ITextComponent itextcomponent = p_192841_1_.field_145915_a[j];
+                     List<ITextComponent> list = GuiUtilRenderComponents.func_178908_a(itextcomponent, 90, fontrenderer, false, true);
+-                    String s = list != null && !list.isEmpty() ? ((ITextComponent)list.get(0)).func_150254_d() : "";
++                    String s = TextFormatting.ALTERNATE_CODE_PATTERN.matcher(list != null && !list.isEmpty() ? ((ITextComponent)list.get(0)).func_150254_d() : "").replaceAll("\u00a7$1");
+ 
+                     if (j == p_192841_1_.field_145918_i)
+                     {
+                         s = "> " + s + " <";
+-                        fontrenderer.func_78276_b(s, -fontrenderer.func_78256_a(s) / 2, j * 10 - p_192841_1_.field_145915_a.length * 5, 0);
++                        fontrenderer.func_78276_b(s, -fontrenderer.func_78256_a(TextFormatting.field_96330_y.matcher(s).replaceAll("")) / 2, j * 10 - p_192841_1_.field_145915_a.length * 5, 0);
+                     }
+                     else
+                     {
+-                        fontrenderer.func_78276_b(s, -fontrenderer.func_78256_a(s) / 2, j * 10 - p_192841_1_.field_145915_a.length * 5, 0);
++                        fontrenderer.func_78276_b(s, -fontrenderer.func_78256_a(TextFormatting.field_96330_y.matcher(s).replaceAll("")) / 2, j * 10 - p_192841_1_.field_145915_a.length * 5, 0);
+                     }
+                 }
+             }

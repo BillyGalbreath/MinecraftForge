@@ -1,0 +1,12 @@
+--- ../src-base/minecraft/net/minecraft/util/text/TextFormatting.java
++++ ../src-work/minecraft/net/minecraft/util/text/TextFormatting.java
+@@ -35,7 +35,8 @@
+     RESET("RESET", 'r', -1);
+ 
+     private static final Map<String, TextFormatting> field_96331_x = Maps.<String, TextFormatting>newHashMap();
+-    private static final Pattern field_96330_y = Pattern.compile("(?i)\u00a7[0-9A-FK-OR]");
++    public static final Pattern field_96330_y = Pattern.compile("(?i)\u00a7([0-9A-FK-OR])");
++    public static final Pattern ALTERNATE_CODE_PATTERN = Pattern.compile("(?i)&([0-9A-FK-OR])");
+     private final String field_175748_y;
+     private final char field_96329_z;
+     private final boolean field_96303_A;

@@ -1,6 +1,14 @@
 --- ../src-base/minecraft/net/minecraft/client/gui/inventory/GuiEditSign.java
 +++ ../src-work/minecraft/net/minecraft/client/gui/inventory/GuiEditSign.java
-@@ -20,9 +20,9 @@
+@@ -13,6 +13,7 @@
+ import net.minecraft.tileentity.TileEntitySign;
+ import net.minecraft.util.ChatAllowedCharacters;
+ import net.minecraft.util.text.TextComponentString;
++import net.minecraft.util.text.TextFormatting;
+ import net.minecraftforge.fml.relauncher.Side;
+ import net.minecraftforge.fml.relauncher.SideOnly;
+ import org.lwjgl.input.Keyboard;
+@@ -20,9 +21,9 @@
  @SideOnly(Side.CLIENT)
  public class GuiEditSign extends GuiScreen
  {
@@ -12,3 +20,12 @@
      private GuiButton field_146852_i;
  
      public GuiEditSign(TileEntitySign p_i1097_1_)
+@@ -87,7 +88,7 @@
+             s = s.substring(0, s.length() - 1);
+         }
+ 
+-        if (ChatAllowedCharacters.func_71566_a(p_73869_1_) && this.field_146289_q.func_78256_a(s + p_73869_1_) <= 90)
++        if (ChatAllowedCharacters.func_71566_a(p_73869_1_) && this.field_146289_q.func_78256_a(TextFormatting.field_96330_y.matcher(TextFormatting.ALTERNATE_CODE_PATTERN.matcher(s + p_73869_1_).replaceAll("\u00a7$1")).replaceAll("")) <= 90)
+         {
+             s = s + p_73869_1_;
+         }

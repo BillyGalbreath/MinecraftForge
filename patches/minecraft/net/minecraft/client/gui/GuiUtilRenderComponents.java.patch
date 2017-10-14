@@ -1,5 +1,14 @@
 --- ../src-base/minecraft/net/minecraft/client/gui/GuiUtilRenderComponents.java
 +++ ../src-work/minecraft/net/minecraft/client/gui/GuiUtilRenderComponents.java
+@@ -43,7 +43,7 @@
+ 
+             String s4 = func_178909_a(itextcomponent1.func_150256_b().func_150218_j() + s, p_178908_4_);
+             String s5 = s4.endsWith("\n") ? s4.substring(0, s4.length() - 1) : s4;
+-            int i1 = p_178908_2_.func_78256_a(s5);
++            int i1 = p_178908_2_.func_78256_a(TextFormatting.field_96330_y.matcher(TextFormatting.ALTERNATE_CODE_PATTERN.matcher(s5).replaceAll("\u00a7$1")).replaceAll(""));
+             TextComponentString textcomponentstring = new TextComponentString(s5);
+             textcomponentstring.func_150255_a(itextcomponent1.func_150256_b().func_150232_l());
+ 
 @@ -73,6 +73,8 @@
                          s3 = s4;
                      }
