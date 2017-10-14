@@ -1,0 +1,27 @@
+--- ../src-base/minecraft/net/minecraft/block/BlockSign.java
++++ ../src-work/minecraft/net/minecraft/block/BlockSign.java
+@@ -83,15 +83,18 @@
+ 
+     public boolean func_180639_a(World p_180639_1_, BlockPos p_180639_2_, IBlockState p_180639_3_, EntityPlayer p_180639_4_, EnumHand p_180639_5_, EnumFacing p_180639_6_, float p_180639_7_, float p_180639_8_, float p_180639_9_)
+     {
+-        if (p_180639_1_.field_72995_K)
++        if (p_180639_5_ == EnumHand.MAIN_HAND && p_180639_4_.func_184614_ca().func_77973_b() == Items.field_151155_ap)
+         {
+-            return true;
+-        }
+-        else
+-        {
+             TileEntity tileentity = p_180639_1_.func_175625_s(p_180639_2_);
+-            return tileentity instanceof TileEntitySign ? ((TileEntitySign)tileentity).func_174882_b(p_180639_4_) : false;
++            if (tileentity instanceof TileEntitySign)
++            {
++                TileEntitySign te = (TileEntitySign) tileentity;
++                te.func_145913_a(true);
++                te.func_145912_a(p_180639_4_);
++                p_180639_4_.func_175141_a(te);
++            }
+         }
++        return true;
+     }
+ 
+     public boolean func_176196_c(World p_176196_1_, BlockPos p_176196_2_)
