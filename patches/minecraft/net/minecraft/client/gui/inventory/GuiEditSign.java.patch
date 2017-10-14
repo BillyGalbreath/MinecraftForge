@@ -1,0 +1,14 @@
+--- ../src-base/minecraft/net/minecraft/client/gui/inventory/GuiEditSign.java
++++ ../src-work/minecraft/net/minecraft/client/gui/inventory/GuiEditSign.java
+@@ -20,9 +20,9 @@
+ @SideOnly(Side.CLIENT)
+ public class GuiEditSign extends GuiScreen
+ {
+-    private final TileEntitySign field_146848_f;
++    public final TileEntitySign field_146848_f;
+     private int field_146849_g;
+-    private int field_146851_h;
++    public int field_146851_h;
+     private GuiButton field_146852_i;
+ 
+     public GuiEditSign(TileEntitySign p_i1097_1_)

@@ -1,0 +1,22 @@
+--- ../src-base/minecraft/net/minecraft/client/gui/GuiRepair.java
++++ ../src-work/minecraft/net/minecraft/client/gui/GuiRepair.java
+@@ -26,8 +26,8 @@
+ public class GuiRepair extends GuiContainer implements IContainerListener
+ {
+     private static final ResourceLocation field_147093_u = new ResourceLocation("textures/gui/container/anvil.png");
+-    private final ContainerRepair field_147092_v;
+-    private GuiTextField field_147091_w;
++    public final ContainerRepair field_147092_v;
++    public GuiTextField field_147091_w;
+     private final InventoryPlayer field_147094_x;
+ 
+     public GuiRepair(InventoryPlayer p_i45508_1_, World p_i45508_2_)
+@@ -122,7 +122,7 @@
+         }
+     }
+ 
+-    private void func_147090_g()
++    public void func_147090_g()
+     {
+         String s = this.field_147091_w.func_146179_b();
+         Slot slot = this.field_147092_v.func_75139_a(0);
