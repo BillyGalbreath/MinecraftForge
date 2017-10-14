@@ -1,0 +1,11 @@
+--- ../src-base/minecraft/net/minecraft/client/gui/GuiChat.java
++++ ../src-work/minecraft/net/minecraft/client/gui/GuiChat.java
+@@ -24,7 +24,7 @@
+     private String field_146410_g = "";
+     private int field_146416_h = -1;
+     private TabCompleter field_184096_i;
+-    protected GuiTextField field_146415_a;
++    public GuiTextField field_146415_a;
+     private String field_146409_v = "";
+ 
+     public GuiChat()
