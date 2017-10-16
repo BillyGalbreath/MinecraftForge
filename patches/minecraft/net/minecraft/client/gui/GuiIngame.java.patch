@@ -1,5 +1,14 @@
 --- ../src-base/minecraft/net/minecraft/client/gui/GuiIngame.java
 +++ ../src-work/minecraft/net/minecraft/client/gui/GuiIngame.java
+@@ -67,7 +67,7 @@
+     protected final Random field_73842_c = new Random();
+     protected final Minecraft field_73839_d;
+     protected final RenderItem field_73841_b;
+-    protected final GuiNewChat field_73840_e;
++    public final GuiNewChat field_73840_e;
+     protected int field_73837_f;
+     protected String field_73838_g = "";
+     protected int field_73845_h;
 @@ -379,7 +379,8 @@
  
                  BlockPos blockpos = raytraceresult.func_178782_a();
