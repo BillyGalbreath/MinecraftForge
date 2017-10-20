@@ -1,0 +1,11 @@
+--- ../src-base/minecraft/net/minecraft/client/gui/GuiShareToLan.java
++++ ../src-work/minecraft/net/minecraft/client/gui/GuiShareToLan.java
+@@ -95,7 +95,7 @@
+                 itextcomponent = new TextComponentString("commands.publish.failed");
+             }
+ 
+-            this.field_146297_k.field_71456_v.func_146158_b().func_146227_a(itextcomponent);
++            this.field_146297_k.field_71456_v.getChatGUI().printChatMessage(itextcomponent);
+         }
+     }
+ 
