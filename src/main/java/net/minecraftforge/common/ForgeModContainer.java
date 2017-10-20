@@ -138,18 +138,15 @@ public class ForgeModContainer extends DummyModContainer implements WorldAccessC
         super(new ModMetadata());
         ModMetadata meta = getMetadata();
         meta.modId       = ForgeVersion.MOD_ID;
-        meta.name        = "Minecraft Forge";
+        meta.name        = "Pl3xForge";
         meta.version     = ForgeVersion.getVersion();
-        meta.credits     = "Made possible with help from many people";
-        meta.authorList  = Arrays.asList("LexManos", "cpw", "fry");
-        meta.description = "Minecraft Forge is a common open source API allowing a broad range of mods " +
-                           "to work cooperatively together. It allows many mods to be created without " +
-                           "them editing the main Minecraft code.";
-        meta.url         = "http://minecraftforge.net";
+        meta.authorList  = Collections.singletonList("BillyGalbreath");
+        meta.description = "Pl3xForge is an open source fork of Forge designed for the Pl3x servers.";
+        meta.url         = "http://pl3x.net";
         meta.screenshots = new String[0];
-        meta.logoFile    = "/forge_logo.png";
+        meta.logoFile    = "/pl3x_logo.png";
         try {
-            updateJSONUrl    = new URL("http://files.minecraftforge.net/maven/net/minecraftforge/forge/promotions_slim.json");
+            updateJSONUrl    = new URL("http://pl3x.net/launcher/latest.json");
         } catch (MalformedURLException e) {}
 
         config = null;

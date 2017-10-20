@@ -232,8 +232,8 @@ task ciWriteBuildNumber << {
     def ln = "\n"; //Linux line endings because we're on git!
 
     file.eachLine{ String s ->
-        if (s.matches("^    public static final int buildVersion    = [\\d]+;\$"))
-            s = "    public static final int buildVersion    = ${bn};";
+        if (s.matches("^    public static final int pl3xVersion    = [\\d]+;\$"))
+            s = "    public static final int pl3xVersion    = ${bn};";
         if (s.matches('^    public static final String mcVersion = "[^\\"]+";'))
             s = "    public static final String mcVersion = \"${minecraft.version}\";";
         outfile += (s+ln);
