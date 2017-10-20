@@ -35,7 +35,7 @@ public class GuiChatBar extends GuiScreen implements ITabCompleter {
 
     public void initGui() {
         Keyboard.enableRepeatEvents(true);
-        sentHistoryCursor = mc.ingameGUI.func_146158_b().getSentMessages().size();
+        sentHistoryCursor = mc.ingameGUI.getChatGUI().getSentMessages().size();
         inputField = new GuiTextField(0, fontRenderer, 4, height - 12, width - 4, 12);
         inputField.setMaxStringLength(256);
         inputField.setEnableBackgroundDrawing(false);
@@ -47,7 +47,7 @@ public class GuiChatBar extends GuiScreen implements ITabCompleter {
 
     public void onGuiClosed() {
         Keyboard.enableRepeatEvents(false);
-        mc.ingameGUI.func_146158_b().resetScroll();
+        mc.ingameGUI.getChatGUI().resetScroll();
     }
 
     public void updateScreen() {
@@ -71,9 +71,9 @@ public class GuiChatBar extends GuiScreen implements ITabCompleter {
             } else if (keyCode == 208) {
                 getSentHistory(1);
             } else if (keyCode == 201) {
-                mc.ingameGUI.func_146158_b().scroll(mc.ingameGUI.func_146158_b().getLineCount() - 1);
+                mc.ingameGUI.getChatGUI().scroll(mc.ingameGUI.getChatGUI().getLineCount() - 1);
             } else if (keyCode == 209) {
-                mc.ingameGUI.func_146158_b().scroll(-mc.ingameGUI.func_146158_b().getLineCount() + 1);
+                mc.ingameGUI.getChatGUI().scroll(-mc.ingameGUI.getChatGUI().getLineCount() + 1);
             } else {
                 inputField.textboxKeyTyped(typedChar, keyCode);
             }
@@ -105,13 +105,13 @@ public class GuiChatBar extends GuiScreen implements ITabCompleter {
                 i *= 7;
             }
 
-            mc.ingameGUI.func_146158_b().scroll(i);
+            mc.ingameGUI.getChatGUI().scroll(i);
         }
     }
 
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
         if (mouseButton == 0) {
-            ITextComponent itextcomponent = mc.ingameGUI.func_146158_b().getChatComponent(Mouse.getX(), Mouse.getY());
+            ITextComponent itextcomponent = mc.ingameGUI.getChatGUI().getChatComponent(Mouse.getX(), Mouse.getY());
 
             if (itextcomponent != null && handleComponentClick(itextcomponent)) {
                 return;
@@ -132,7 +132,7 @@ public class GuiChatBar extends GuiScreen implements ITabCompleter {
 
     public void getSentHistory(int msgPos) {
         int i = sentHistoryCursor + msgPos;
-        int j = mc.ingameGUI.func_146158_b().getSentMessages().size();
+        int j = mc.ingameGUI.getChatGUI().getSentMessages().size();
         i = MathHelper.clamp(i, 0, j);
 
         if (i != sentHistoryCursor) {
@@ -144,7 +144,7 @@ public class GuiChatBar extends GuiScreen implements ITabCompleter {
                     historyBuffer = inputField.getText();
                 }
 
-                inputField.setText(mc.ingameGUI.func_146158_b().getSentMessages().get(i));
+                inputField.setText(mc.ingameGUI.getChatGUI().getSentMessages().get(i));
                 sentHistoryCursor = i;
             }
         }
@@ -158,7 +158,7 @@ public class GuiChatBar extends GuiScreen implements ITabCompleter {
         //drawRect(2, height - 14, width - 2, height - 2, Integer.MIN_VALUE);
         drawRect(2, height - 14, width - 2, height - 2, (int) ((long) a << 24 | r << 16 | g << 8 | b));
         inputField.drawTextBox();
-        ITextComponent itextcomponent = mc.ingameGUI.func_146158_b().getChatComponent(Mouse.getX(), Mouse.getY());
+        ITextComponent itextcomponent = mc.ingameGUI.getChatGUI().getChatComponent(Mouse.getX(), Mouse.getY());
 
         if (itextcomponent != null && itextcomponent.getStyle().getHoverEvent() != null) {
             handleComponentHover(itextcomponent, mouseX, mouseY);
@@ -197,7 +197,7 @@ public class GuiChatBar extends GuiScreen implements ITabCompleter {
                     stringbuilder.append(s);
                 }
 
-                client.ingameGUI.func_146158_b().printChatMessageWithOptionalDeletion(new TextComponentString(stringbuilder.toString()), 1);
+                client.ingameGUI.getChatGUI().printChatMessageWithOptionalDeletion(new TextComponentString(stringbuilder.toString()), 1);
             }
         }
 

@@ -11,3 +11,89 @@
  
      public GuiChat()
      {
+@@ -39,7 +39,7 @@
+     public void func_73866_w_()
+     {
+         Keyboard.enableRepeatEvents(true);
+-        this.field_146416_h = this.field_146297_k.field_71456_v.func_146158_b().func_146238_c().size();
++        this.field_146416_h = this.field_146297_k.field_71456_v.getChatGUI().getSentMessages().size();
+         this.field_146415_a = new GuiTextField(0, this.field_146289_q, 4, this.field_146295_m - 12, this.field_146294_l - 4, 12);
+         this.field_146415_a.func_146203_f(256);
+         this.field_146415_a.func_146185_a(false);
+@@ -52,7 +52,7 @@
+     public void func_146281_b()
+     {
+         Keyboard.enableRepeatEvents(false);
+-        this.field_146297_k.field_71456_v.func_146158_b().func_146240_d();
++        this.field_146297_k.field_71456_v.getChatGUI().resetScroll();
+     }
+ 
+     public void func_73876_c()
+@@ -89,11 +89,11 @@
+             }
+             else if (p_73869_2_ == 201)
+             {
+-                this.field_146297_k.field_71456_v.func_146158_b().func_146229_b(this.field_146297_k.field_71456_v.func_146158_b().func_146232_i() - 1);
++                this.field_146297_k.field_71456_v.getChatGUI().scroll(this.field_146297_k.field_71456_v.getChatGUI().getLineCount() - 1);
+             }
+             else if (p_73869_2_ == 209)
+             {
+-                this.field_146297_k.field_71456_v.func_146158_b().func_146229_b(-this.field_146297_k.field_71456_v.func_146158_b().func_146232_i() + 1);
++                this.field_146297_k.field_71456_v.getChatGUI().scroll(-this.field_146297_k.field_71456_v.getChatGUI().getLineCount() + 1);
+             }
+             else
+             {
+@@ -135,7 +135,7 @@
+                 i *= 7;
+             }
+ 
+-            this.field_146297_k.field_71456_v.func_146158_b().func_146229_b(i);
++            this.field_146297_k.field_71456_v.getChatGUI().scroll(i);
+         }
+     }
+ 
+@@ -143,7 +143,7 @@
+     {
+         if (p_73864_3_ == 0)
+         {
+-            ITextComponent itextcomponent = this.field_146297_k.field_71456_v.func_146158_b().func_146236_a(Mouse.getX(), Mouse.getY());
++            ITextComponent itextcomponent = this.field_146297_k.field_71456_v.getChatGUI().getChatComponent(Mouse.getX(), Mouse.getY());
+ 
+             if (itextcomponent != null && this.func_175276_a(itextcomponent))
+             {
+@@ -170,7 +170,7 @@
+     public void func_146402_a(int p_146402_1_)
+     {
+         int i = this.field_146416_h + p_146402_1_;
+-        int j = this.field_146297_k.field_71456_v.func_146158_b().func_146238_c().size();
++        int j = this.field_146297_k.field_71456_v.getChatGUI().getSentMessages().size();
+         i = MathHelper.func_76125_a(i, 0, j);
+ 
+         if (i != this.field_146416_h)
+@@ -187,7 +187,7 @@
+                     this.field_146410_g = this.field_146415_a.func_146179_b();
+                 }
+ 
+-                this.field_146415_a.func_146180_a((String)this.field_146297_k.field_71456_v.func_146158_b().func_146238_c().get(i));
++                this.field_146415_a.func_146180_a((String)this.field_146297_k.field_71456_v.getChatGUI().getSentMessages().get(i));
+                 this.field_146416_h = i;
+             }
+         }
+@@ -197,7 +197,7 @@
+     {
+         func_73734_a(2, this.field_146295_m - 14, this.field_146294_l - 2, this.field_146295_m - 2, Integer.MIN_VALUE);
+         this.field_146415_a.func_146194_f();
+-        ITextComponent itextcomponent = this.field_146297_k.field_71456_v.func_146158_b().func_146236_a(Mouse.getX(), Mouse.getY());
++        ITextComponent itextcomponent = this.field_146297_k.field_71456_v.getChatGUI().getChatComponent(Mouse.getX(), Mouse.getY());
+ 
+         if (itextcomponent != null && itextcomponent.func_150256_b().func_150210_i() != null)
+         {
+@@ -245,7 +245,7 @@
+                         stringbuilder.append(s);
+                     }
+ 
+-                    this.field_186853_g.field_71456_v.func_146158_b().func_146234_a(new TextComponentString(stringbuilder.toString()), 1);
++                    this.field_186853_g.field_71456_v.getChatGUI().printChatMessageWithOptionalDeletion(new TextComponentString(stringbuilder.toString()), 1);
+                 }
+             }
+ 

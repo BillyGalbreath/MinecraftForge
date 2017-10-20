@@ -156,7 +156,7 @@
          if (p_147108_1_ == null && this.field_71441_e == null)
          {
              p_147108_1_ = new GuiMainMenu();
-@@ -969,6 +976,17 @@
+@@ -969,10 +976,21 @@
              p_147108_1_ = new GuiGameOver((ITextComponent)null);
          }
  
@@ -174,6 +174,11 @@
          if (p_147108_1_ instanceof GuiMainMenu || p_147108_1_ instanceof GuiMultiplayer)
          {
              this.field_71474_y.field_74330_P = false;
+-            this.field_71456_v.func_146158_b().func_146231_a(true);
++            this.field_71456_v.getChatGUI().clearChatMessages(true);
+         }
+ 
+         this.field_71462_r = p_147108_1_;
 @@ -1094,11 +1112,13 @@
  
          if (!this.field_71454_w)
@@ -275,15 +280,44 @@
          }
  
          this.func_184117_aA();
-@@ -2057,7 +2088,7 @@
+@@ -2006,7 +2037,7 @@
+         {
+             if (this.field_71456_v != null)
+             {
+-                this.field_71456_v.func_146158_b().func_146231_a(false);
++                this.field_71456_v.getChatGUI().clearChatMessages(false);
+             }
+ 
+             return true;
+@@ -2057,17 +2088,17 @@
          else if (p_184122_1_ == 16)
          {
              this.func_190521_a("debug.help.message");
 -            GuiNewChat guinewchat = this.field_71456_v.func_146158_b();
-+            GuiChatWindow guinewchat = this.field_71456_v.func_146158_b();
-             guinewchat.func_146227_a(new TextComponentTranslation("debug.reload_chunks.help", new Object[0]));
-             guinewchat.func_146227_a(new TextComponentTranslation("debug.show_hitboxes.help", new Object[0]));
-             guinewchat.func_146227_a(new TextComponentTranslation("debug.clear_chat.help", new Object[0]));
+-            guinewchat.func_146227_a(new TextComponentTranslation("debug.reload_chunks.help", new Object[0]));
+-            guinewchat.func_146227_a(new TextComponentTranslation("debug.show_hitboxes.help", new Object[0]));
+-            guinewchat.func_146227_a(new TextComponentTranslation("debug.clear_chat.help", new Object[0]));
+-            guinewchat.func_146227_a(new TextComponentTranslation("debug.cycle_renderdistance.help", new Object[0]));
+-            guinewchat.func_146227_a(new TextComponentTranslation("debug.chunk_boundaries.help", new Object[0]));
+-            guinewchat.func_146227_a(new TextComponentTranslation("debug.advanced_tooltips.help", new Object[0]));
+-            guinewchat.func_146227_a(new TextComponentTranslation("debug.creative_spectator.help", new Object[0]));
+-            guinewchat.func_146227_a(new TextComponentTranslation("debug.pause_focus.help", new Object[0]));
+-            guinewchat.func_146227_a(new TextComponentTranslation("debug.help.help", new Object[0]));
+-            guinewchat.func_146227_a(new TextComponentTranslation("debug.reload_resourcepacks.help", new Object[0]));
++            GuiChatWindow guinewchat = this.field_71456_v.getChatGUI();
++            guinewchat.printChatMessage(new TextComponentTranslation("debug.reload_chunks.help", new Object[0]));
++            guinewchat.printChatMessage(new TextComponentTranslation("debug.show_hitboxes.help", new Object[0]));
++            guinewchat.printChatMessage(new TextComponentTranslation("debug.clear_chat.help", new Object[0]));
++            guinewchat.printChatMessage(new TextComponentTranslation("debug.cycle_renderdistance.help", new Object[0]));
++            guinewchat.printChatMessage(new TextComponentTranslation("debug.chunk_boundaries.help", new Object[0]));
++            guinewchat.printChatMessage(new TextComponentTranslation("debug.advanced_tooltips.help", new Object[0]));
++            guinewchat.printChatMessage(new TextComponentTranslation("debug.creative_spectator.help", new Object[0]));
++            guinewchat.printChatMessage(new TextComponentTranslation("debug.pause_focus.help", new Object[0]));
++            guinewchat.printChatMessage(new TextComponentTranslation("debug.help.help", new Object[0]));
++            guinewchat.printChatMessage(new TextComponentTranslation("debug.reload_resourcepacks.help", new Object[0]));
+             return true;
+         }
+         else if (p_184122_1_ == 20)
 @@ -2170,12 +2201,12 @@
          {
              while (this.field_71474_y.field_74310_D.func_151468_f())
@@ -308,7 +342,7 @@
              int i = Mouse.getEventButton();
              KeyBinding.func_74510_a(i - 100, Mouse.getEventButtonState());
  
-@@ -2294,6 +2327,7 @@
+@@ -2294,16 +2327,18 @@
                      this.field_71462_r.func_146274_d();
                  }
              }
@@ -316,7 +350,11 @@
          }
      }
  
-@@ -2304,6 +2338,7 @@
+     private void func_190521_a(String p_190521_1_, Object... p_190521_2_)
+     {
+-        this.field_71456_v.func_146158_b().func_146227_a((new TextComponentString("")).func_150257_a((new TextComponentTranslation("debug.prefix", new Object[0])).func_150255_a((new Style()).func_150238_a(TextFormatting.YELLOW).func_150227_a(Boolean.valueOf(true)))).func_150258_a(" ").func_150257_a(new TextComponentTranslation(p_190521_1_, p_190521_2_)));
++        this.field_71456_v.getChatGUI().printChatMessage((new TextComponentString("")).func_150257_a((new TextComponentTranslation("debug.prefix", new Object[0])).func_150255_a((new Style()).func_150238_a(TextFormatting.YELLOW).func_150227_a(Boolean.valueOf(true)))).func_150258_a(" ").func_150257_a(new TextComponentTranslation(p_190521_1_, p_190521_2_)));
+     }
  
      public void func_71371_a(String p_71371_1_, String p_71371_2_, @Nullable WorldSettings p_71371_3_)
      {
@@ -591,7 +629,7 @@
      }
  
      public boolean func_70002_Q()
-@@ -3181,11 +3093,11 @@
+@@ -3181,13 +3093,13 @@
              {
                  if (Keyboard.getEventKeyState())
                  {
@@ -603,8 +641,11 @@
 -                    else if (i == this.field_71474_y.field_151447_Z.func_151463_i())
 +                    else if (this.field_71474_y.field_151447_Z.isActiveAndMatches(i))
                      {
-                         this.field_71456_v.func_146158_b().func_146227_a(ScreenShotHelper.func_148260_a(this.field_71412_D, this.field_71443_c, this.field_71440_d, this.field_147124_at));
+-                        this.field_71456_v.func_146158_b().func_146227_a(ScreenShotHelper.func_148260_a(this.field_71412_D, this.field_71443_c, this.field_71440_d, this.field_147124_at));
++                        this.field_71456_v.getChatGUI().printChatMessage(ScreenShotHelper.func_148260_a(this.field_71412_D, this.field_71443_c, this.field_71440_d, this.field_147124_at));
                      }
+                     else if (i == 48 && GuiScreen.func_146271_m() && (this.field_71462_r == null || this.field_71462_r != null && !this.field_71462_r.func_193976_p()))
+                     {
 @@ -3199,6 +3111,7 @@
                          }
                      }

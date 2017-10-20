@@ -68,7 +68,7 @@
                  }
              }
          }
-@@ -1271,11 +1279,16 @@
+@@ -1271,7 +1279,7 @@
          }
      }
  
@@ -77,12 +77,3 @@
      {
          return this.field_73840_e;
      }
- 
-+    public GuiChatWindow func_146158_b()
-+    {
-+        return this.field_73840_e;
-+    }
-+
-     public int func_73834_c()
-     {
-         return this.field_73837_f;

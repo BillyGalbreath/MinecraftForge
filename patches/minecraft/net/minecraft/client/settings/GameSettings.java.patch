@@ -36,32 +36,64 @@
          this.field_74324_K = (KeyBinding[])ArrayUtils.addAll(new KeyBinding[] {this.field_74312_F, this.field_74313_G, this.field_74351_w, this.field_74370_x, this.field_74368_y, this.field_74366_z, this.field_74314_A, this.field_74311_E, this.field_151444_V, this.field_74316_C, this.field_151445_Q, this.field_74310_D, this.field_74321_H, this.field_74322_I, this.field_74323_J, this.field_151447_Z, this.field_151457_aa, this.field_151458_ab, this.field_152395_am, this.field_178883_an, this.field_186718_X, this.field_193629_ap, this.field_193630_aq, this.field_194146_ao}, this.field_151456_ac);
          this.field_74318_M = EnumDifficulty.NORMAL;
          this.field_74332_R = "";
-@@ -289,6 +295,30 @@
-             this.field_74317_L.field_71456_v.func_146158_b().func_146245_b();
+@@ -262,33 +268,57 @@
+         if (p_74304_1_ == GameSettings.Options.CHAT_OPACITY)
+         {
+             this.field_74357_r = p_74304_2_;
+-            this.field_74317_L.field_71456_v.func_146158_b().func_146245_b();
++            this.field_74317_L.field_71456_v.getChatGUI().refreshChat();
+         }
+ 
+         if (p_74304_1_ == GameSettings.Options.CHAT_HEIGHT_FOCUSED)
+         {
+             this.field_96694_H = p_74304_2_;
+-            this.field_74317_L.field_71456_v.func_146158_b().func_146245_b();
++            this.field_74317_L.field_71456_v.getChatGUI().refreshChat();
+         }
+ 
+         if (p_74304_1_ == GameSettings.Options.CHAT_HEIGHT_UNFOCUSED)
+         {
+             this.field_96693_G = p_74304_2_;
+-            this.field_74317_L.field_71456_v.func_146158_b().func_146245_b();
++            this.field_74317_L.field_71456_v.getChatGUI().refreshChat();
+         }
+ 
+         if (p_74304_1_ == GameSettings.Options.CHAT_WIDTH)
+         {
+             this.field_96692_F = p_74304_2_;
+-            this.field_74317_L.field_71456_v.func_146158_b().func_146245_b();
++            this.field_74317_L.field_71456_v.getChatGUI().refreshChat();
+         }
+ 
+         if (p_74304_1_ == GameSettings.Options.CHAT_SCALE)
+         {
+             this.field_96691_E = p_74304_2_;
+-            this.field_74317_L.field_71456_v.func_146158_b().func_146245_b();
++            this.field_74317_L.field_71456_v.getChatGUI().refreshChat();
          }
  
 +        if (p_74304_1_ == GameSettings.Options.CHAT_BG_RED)
 +        {
 +            this.chatBGRed = p_74304_2_;
-+            this.field_74317_L.field_71456_v.func_146158_b().refreshChat();
++            this.field_74317_L.field_71456_v.getChatGUI().refreshChat();
 +        }
 +
 +        if (p_74304_1_ == GameSettings.Options.CHAT_BG_GREEN)
 +        {
 +            this.chatBGGreen = p_74304_2_;
-+            this.field_74317_L.field_71456_v.func_146158_b().refreshChat();
++            this.field_74317_L.field_71456_v.getChatGUI().refreshChat();
 +        }
 +
 +        if (p_74304_1_ == GameSettings.Options.CHAT_BG_BLUE)
 +        {
 +            this.chatBGBlue = p_74304_2_;
-+            this.field_74317_L.field_71456_v.func_146158_b().refreshChat();
++            this.field_74317_L.field_71456_v.getChatGUI().refreshChat();
 +        }
 +
 +        if (p_74304_1_ == GameSettings.Options.CHAT_BG_ALPHA)
 +        {
 +            this.chatBGAlpha = p_74304_2_;
-+            this.field_74317_L.field_71456_v.func_146158_b().refreshChat();
++            this.field_74317_L.field_71456_v.getChatGUI().refreshChat();
 +        }
 +
          if (p_74304_1_ == GameSettings.Options.MIPMAP_LEVELS)

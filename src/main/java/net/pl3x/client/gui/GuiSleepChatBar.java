@@ -38,7 +38,7 @@ public class GuiSleepChatBar extends GuiChatBar
             }
 
             this.inputField.setText("");
-            this.mc.ingameGUI.func_146158_b().resetScroll();
+            this.mc.ingameGUI.getChatGUI().resetScroll();
         }
     }
 

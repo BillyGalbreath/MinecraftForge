@@ -282,45 +282,4 @@ public class GuiChatWindow extends Gui {
     public int getLineCount() {
         return getChatHeight() / 9;
     }
-
-    // obfuscation helpers (minimizes diff to patches)
-    public void func_146227_a(ITextComponent chatComponent) {
-        printChatMessage(chatComponent);
-    }
-
-    public void func_146231_a(boolean p_146231_1_) {
-        clearChatMessages(p_146231_1_);
-    }
-
-    public void func_146239_a(String message) {
-        addToSentMessages(message);
-    }
-
-    public List<String> func_146238_c() {
-        return getSentMessages();
-    }
-
-    public void func_146240_d() {
-        resetScroll();
-    }
-
-    public void func_146229_b(int amount) {
-        scroll(amount);
-    }
-
-    public ITextComponent func_146236_a(int mouseX, int mouseY) {
-        return getChatComponent(mouseX, mouseY);
-    }
-
-    public void func_146234_a(ITextComponent chatComponent, int chatLineId) {
-        printChatMessageWithOptionalDeletion(chatComponent, chatLineId);
-    }
-
-    public int func_146232_i() {
-        return getLineCount();
-    }
-
-    public void func_146245_b() {
-        refreshChat();
-    }
 }

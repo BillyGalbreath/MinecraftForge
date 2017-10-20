@@ -59,17 +59,17 @@
              else if (f == 101.0F)
              {
 -                this.field_147299_f.field_71456_v.func_146158_b().func_146227_a(new TextComponentTranslation("demo.help.movement", new Object[] {GameSettings.func_74298_c(gamesettings.field_74351_w.func_151463_i()), GameSettings.func_74298_c(gamesettings.field_74370_x.func_151463_i()), GameSettings.func_74298_c(gamesettings.field_74368_y.func_151463_i()), GameSettings.func_74298_c(gamesettings.field_74366_z.func_151463_i())}));
-+                this.field_147299_f.field_71456_v.func_146158_b().func_146227_a(new TextComponentTranslation("demo.help.movement", new Object[] {gamesettings.field_74351_w.getDisplayName(), gamesettings.field_74370_x.getDisplayName(), gamesettings.field_74368_y.getDisplayName(), gamesettings.field_74366_z.getDisplayName()}));
++                this.field_147299_f.field_71456_v.getChatGUI().printChatMessage(new TextComponentTranslation("demo.help.movement", new Object[] {gamesettings.field_74351_w.getDisplayName(), gamesettings.field_74370_x.getDisplayName(), gamesettings.field_74368_y.getDisplayName(), gamesettings.field_74366_z.getDisplayName()}));
              }
              else if (f == 102.0F)
              {
 -                this.field_147299_f.field_71456_v.func_146158_b().func_146227_a(new TextComponentTranslation("demo.help.jump", new Object[] {GameSettings.func_74298_c(gamesettings.field_74314_A.func_151463_i())}));
-+                this.field_147299_f.field_71456_v.func_146158_b().func_146227_a(new TextComponentTranslation("demo.help.jump", new Object[] {gamesettings.field_74314_A.getDisplayName()}));
++                this.field_147299_f.field_71456_v.getChatGUI().printChatMessage(new TextComponentTranslation("demo.help.jump", new Object[] {gamesettings.field_74314_A.getDisplayName()}));
              }
              else if (f == 103.0F)
              {
 -                this.field_147299_f.field_71456_v.func_146158_b().func_146227_a(new TextComponentTranslation("demo.help.inventory", new Object[] {GameSettings.func_74298_c(gamesettings.field_151445_Q.func_151463_i())}));
-+                this.field_147299_f.field_71456_v.func_146158_b().func_146227_a(new TextComponentTranslation("demo.help.inventory", new Object[] {gamesettings.field_151445_Q.getDisplayName()}));
++                this.field_147299_f.field_71456_v.getChatGUI().printChatMessage(new TextComponentTranslation("demo.help.inventory", new Object[] {gamesettings.field_151445_Q.getDisplayName()}));
              }
          }
          else if (i == 6)

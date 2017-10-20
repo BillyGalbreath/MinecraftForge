@@ -1,6 +1,6 @@
 --- ../src-base/minecraft/net/minecraft/client/gui/GuiSleepMP.java
 +++ ../src-work/minecraft/net/minecraft/client/gui/GuiSleepMP.java
-@@ -32,7 +32,7 @@
+@@ -32,11 +32,11 @@
  
              if (!s.isEmpty())
              {
@@ -9,3 +9,8 @@
              }
  
              this.field_146415_a.func_146180_a("");
+-            this.field_146297_k.field_71456_v.func_146158_b().func_146240_d();
++            this.field_146297_k.field_71456_v.getChatGUI().resetScroll();
+         }
+     }
+ 
