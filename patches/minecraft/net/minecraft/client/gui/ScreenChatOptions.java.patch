@@ -1,0 +1,51 @@
+--- ../src-base/minecraft/net/minecraft/client/gui/ScreenChatOptions.java
++++ ../src-work/minecraft/net/minecraft/client/gui/ScreenChatOptions.java
+@@ -10,7 +10,15 @@
+ @SideOnly(Side.CLIENT)
+ public class ScreenChatOptions extends GuiScreen
+ {
+-    private static final GameSettings.Options[] field_146399_a = new GameSettings.Options[] {GameSettings.Options.CHAT_VISIBILITY, GameSettings.Options.CHAT_COLOR, GameSettings.Options.CHAT_LINKS, GameSettings.Options.CHAT_OPACITY, GameSettings.Options.CHAT_LINKS_PROMPT, GameSettings.Options.CHAT_SCALE, GameSettings.Options.CHAT_HEIGHT_FOCUSED, GameSettings.Options.CHAT_HEIGHT_UNFOCUSED, GameSettings.Options.CHAT_WIDTH, GameSettings.Options.REDUCED_DEBUG_INFO, GameSettings.Options.NARRATOR};
++    private static final GameSettings.Options[] field_146399_a = new GameSettings.Options[] {
++            GameSettings.Options.CHAT_VISIBILITY, GameSettings.Options.CHAT_COLOR,
++            GameSettings.Options.CHAT_LINKS, GameSettings.Options.CHAT_OPACITY,
++            GameSettings.Options.CHAT_LINKS_PROMPT, GameSettings.Options.CHAT_SCALE,
++            GameSettings.Options.CHAT_BG_RED, GameSettings.Options.CHAT_HEIGHT_UNFOCUSED,
++            GameSettings.Options.CHAT_BG_GREEN, GameSettings.Options.CHAT_HEIGHT_FOCUSED,
++            GameSettings.Options.CHAT_BG_BLUE, GameSettings.Options.CHAT_WIDTH,
++            GameSettings.Options.CHAT_BG_ALPHA, GameSettings.Options.REDUCED_DEBUG_INFO,
++            GameSettings.Options.NARRATOR};
+     private final GuiScreen field_146396_g;
+     private final GameSettings field_146400_h;
+     private String field_146401_i;
+@@ -31,11 +39,11 @@
+         {
+             if (gamesettings$options.func_74380_a())
+             {
+-                this.field_146292_n.add(new GuiOptionSlider(gamesettings$options.func_74381_c(), this.field_146294_l / 2 - 155 + i % 2 * 160, this.field_146295_m / 6 + 24 * (i >> 1), gamesettings$options));
++                this.field_146292_n.add(new GuiOptionSlider(gamesettings$options.func_74381_c(), this.field_146294_l / 2 - 155 + i % 2 * 160, this.field_146295_m / 6 + 22 * (i >> 1) - 10, gamesettings$options));
+             }
+             else
+             {
+-                GuiOptionButton guioptionbutton = new GuiOptionButton(gamesettings$options.func_74381_c(), this.field_146294_l / 2 - 155 + i % 2 * 160, this.field_146295_m / 6 + 24 * (i >> 1), gamesettings$options, this.field_146400_h.func_74297_c(gamesettings$options));
++                GuiOptionButton guioptionbutton = new GuiOptionButton(gamesettings$options.func_74381_c(), this.field_146294_l / 2 - 155 + i % 2 * 160, this.field_146295_m / 6 + 22 * (i >> 1) - 10, gamesettings$options, this.field_146400_h.func_74297_c(gamesettings$options));
+                 this.field_146292_n.add(guioptionbutton);
+ 
+                 if (gamesettings$options == GameSettings.Options.NARRATOR)
+@@ -48,7 +56,7 @@
+             ++i;
+         }
+ 
+-        this.field_146292_n.add(new GuiButton(200, this.field_146294_l / 2 - 100, this.field_146295_m / 6 + 144, I18n.func_135052_a("gui.done")));
++        this.field_146292_n.add(new GuiButton(200, this.field_146294_l / 2 - 100, this.field_146295_m / 5 + 161, I18n.func_135052_a("gui.done")));
+     }
+ 
+     protected void func_73869_a(char p_73869_1_, int p_73869_2_) throws IOException
+@@ -82,7 +90,7 @@
+     public void func_73863_a(int p_73863_1_, int p_73863_2_, float p_73863_3_)
+     {
+         this.func_146276_q_();
+-        this.func_73732_a(this.field_146289_q, this.field_146401_i, this.field_146294_l / 2, 20, 16777215);
++        this.func_73732_a(this.field_146289_q, this.field_146401_i, this.field_146294_l / 2, 15, 16777215);
+         super.func_73863_a(p_73863_1_, p_73863_2_, p_73863_3_);
+     }
+ 

@@ -1,5 +1,27 @@
 --- ../src-base/minecraft/net/minecraft/client/Minecraft.java
 +++ ../src-work/minecraft/net/minecraft/client/Minecraft.java
+@@ -48,7 +48,7 @@
+ import net.minecraft.client.audio.SoundHandler;
+ import net.minecraft.client.entity.EntityPlayerSP;
+ import net.minecraft.client.gui.FontRenderer;
+-import net.minecraft.client.gui.GuiChat;
++import net.pl3x.client.gui.GuiChatBar;
+ import net.minecraft.client.gui.GuiControls;
+ import net.minecraft.client.gui.GuiGameOver;
+ import net.minecraft.client.gui.GuiIngame;
+@@ -56,10 +56,10 @@
+ import net.minecraft.client.gui.GuiMainMenu;
+ import net.minecraft.client.gui.GuiMemoryErrorScreen;
+ import net.minecraft.client.gui.GuiMultiplayer;
+-import net.minecraft.client.gui.GuiNewChat;
++import net.pl3x.client.gui.GuiChatWindow;
+ import net.minecraft.client.gui.GuiScreen;
+ import net.minecraft.client.gui.GuiScreenWorking;
+-import net.minecraft.client.gui.GuiSleepMP;
++import net.pl3x.client.gui.GuiSleepChatBar;
+ import net.minecraft.client.gui.GuiWinGame;
+ import net.minecraft.client.gui.ScaledResolution;
+ import net.minecraft.client.gui.ScreenChatOptions;
 @@ -344,7 +344,6 @@
          this.field_152355_az = (new YggdrasilAuthenticationService(this.field_110453_aa, UUID.randomUUID().toString())).createMinecraftSessionService();
          this.field_71449_j = p_i45547_1_.field_178745_a.field_178752_a;
@@ -224,6 +246,19 @@
          this.field_71424_I.func_76320_a("gui");
  
          if (!this.field_71445_n)
+@@ -1708,10 +1737,10 @@
+             }
+             else if (this.field_71439_g.func_70608_bn() && this.field_71441_e != null)
+             {
+-                this.func_147108_a(new GuiSleepMP());
++                this.func_147108_a(new GuiSleepChatBar());
+             }
+         }
+-        else if (this.field_71462_r != null && this.field_71462_r instanceof GuiSleepMP && !this.field_71439_g.func_70608_bn())
++        else if (this.field_71462_r != null && this.field_71462_r instanceof GuiSleepChatBar && !this.field_71439_g.func_70608_bn())
+         {
+             this.func_147108_a((GuiScreen)null);
+         }
 @@ -1877,6 +1906,7 @@
          }
  
@@ -240,6 +275,30 @@
          }
  
          this.func_184117_aA();
+@@ -2057,7 +2088,7 @@
+         else if (p_184122_1_ == 16)
+         {
+             this.func_190521_a("debug.help.message");
+-            GuiNewChat guinewchat = this.field_71456_v.func_146158_b();
++            GuiChatWindow guinewchat = this.field_71456_v.func_146158_b();
+             guinewchat.func_146227_a(new TextComponentTranslation("debug.reload_chunks.help", new Object[0]));
+             guinewchat.func_146227_a(new TextComponentTranslation("debug.show_hitboxes.help", new Object[0]));
+             guinewchat.func_146227_a(new TextComponentTranslation("debug.clear_chat.help", new Object[0]));
+@@ -2170,12 +2201,12 @@
+         {
+             while (this.field_71474_y.field_74310_D.func_151468_f())
+             {
+-                this.func_147108_a(new GuiChat());
++                this.func_147108_a(new GuiChatBar());
+             }
+ 
+             if (this.field_71462_r == null && this.field_71474_y.field_74323_J.func_151468_f())
+             {
+-                this.func_147108_a(new GuiChat("/"));
++                this.func_147108_a(new GuiChatBar("/"));
+             }
+         }
+ 
 @@ -2239,6 +2270,8 @@
      {
          while (Mouse.next())
