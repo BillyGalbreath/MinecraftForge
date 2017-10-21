@@ -10,7 +10,11 @@
  import net.minecraft.client.Minecraft;
  import net.minecraft.client.renderer.GlStateManager;
  import net.minecraft.entity.player.EntityPlayer;
-@@ -15,79 +12,61 @@
+@@ -12,82 +9,65 @@
+ import net.minecraft.util.text.TextComponentString;
+ import net.minecraftforge.fml.relauncher.Side;
+ import net.minecraftforge.fml.relauncher.SideOnly;
++import net.pl3xforge.Pl3xSettings;
  import org.apache.logging.log4j.LogManager;
  import org.apache.logging.log4j.Logger;
  
@@ -56,10 +60,10 @@
 -            {
 -                boolean flag = false;
 +            float chatOpacity = field_146247_f.field_71474_y.field_74357_r;
-+            int a = ((int) field_146247_f.field_71474_y.chatBGAlpha);
-+            int r = ((int) field_146247_f.field_71474_y.chatBGRed);
-+            int g = ((int) field_146247_f.field_71474_y.chatBGGreen);
-+            int b = ((int) field_146247_f.field_71474_y.chatBGBlue);
++            int a = Pl3xSettings.INSTANCE.chatBGAlpha;
++            int r = Pl3xSettings.INSTANCE.chatBGRed;
++            int g = Pl3xSettings.INSTANCE.chatBGGreen;
++            int b = Pl3xSettings.INSTANCE.chatBGBlue;
  
 -                if (this.func_146241_e())
 -                {
@@ -127,7 +131,7 @@
                                  GlStateManager.func_179118_c();
                                  GlStateManager.func_179084_k();
                              }
-@@ -95,21 +74,19 @@
+@@ -95,21 +75,19 @@
                      }
                  }
  
@@ -160,7 +164,7 @@
                      }
                  }
  
-@@ -118,152 +95,122 @@
+@@ -118,152 +96,122 @@
          }
      }
  
@@ -379,7 +383,7 @@
                                      return itextcomponent;
                                  }
                              }
-@@ -271,83 +218,63 @@
+@@ -271,83 +219,63 @@
                      }
  
                      return null;
