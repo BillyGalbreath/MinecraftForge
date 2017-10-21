@@ -23,7 +23,7 @@ public class GuiChatBar extends GuiScreen implements ITabCompleter {
     private String historyBuffer = "";
     private int sentHistoryCursor = -1;
     private TabCompleter tabCompleter;
-    protected GuiTextField inputField; // inputField
+    protected GuiTextField inputField;
     private String defaultInputFieldText = "";
 
     public GuiChatBar() {
@@ -122,7 +122,11 @@ public class GuiChatBar extends GuiScreen implements ITabCompleter {
         super.mouseClicked(mouseX, mouseY, mouseButton);
     }
 
-    protected void setText(String newChatText, boolean shouldOverwrite) {
+    public String getText() {
+        return inputField.getText();
+    }
+
+    public void setText(String newChatText, boolean shouldOverwrite) {
         if (shouldOverwrite) {
             inputField.setText(newChatText);
         } else {
@@ -151,12 +155,8 @@ public class GuiChatBar extends GuiScreen implements ITabCompleter {
     }
 
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        int a = ((int) mc.gameSettings.chatBGAlpha);
-        int r = ((int) mc.gameSettings.chatBGRed);
-        int g = ((int) mc.gameSettings.chatBGGreen);
-        int b = ((int) mc.gameSettings.chatBGBlue);
         //drawRect(2, height - 14, width - 2, height - 2, Integer.MIN_VALUE);
-        drawRect(2, height - 14, width - 2, height - 2, (int) ((long) a << 24 | r << 16 | g << 8 | b));
+        drawRect(2, height - 14, width - 2, height - 2, getBGColor());
         inputField.drawTextBox();
         ITextComponent itextcomponent = mc.ingameGUI.getChatGUI().getChatComponent(Mouse.getX(), Mouse.getY());
 
@@ -211,5 +211,12 @@ public class GuiChatBar extends GuiScreen implements ITabCompleter {
 
             return blockpos;
         }
+    }
+
+    public int getBGColor() {
+        return (int) ((long) mc.gameSettings.chatBGAlpha << 24 |
+                (int) mc.gameSettings.chatBGRed << 16 |
+                (int) mc.gameSettings.chatBGGreen << 8 |
+                (int) mc.gameSettings.chatBGBlue);
     }
 }
