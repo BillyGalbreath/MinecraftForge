@@ -1,27 +1,5 @@
 --- ../src-base/minecraft/net/minecraft/client/Minecraft.java
 +++ ../src-work/minecraft/net/minecraft/client/Minecraft.java
-@@ -48,7 +48,7 @@
- import net.minecraft.client.audio.SoundHandler;
- import net.minecraft.client.entity.EntityPlayerSP;
- import net.minecraft.client.gui.FontRenderer;
--import net.minecraft.client.gui.GuiChat;
-+import net.pl3x.client.gui.GuiChatBar;
- import net.minecraft.client.gui.GuiControls;
- import net.minecraft.client.gui.GuiGameOver;
- import net.minecraft.client.gui.GuiIngame;
-@@ -56,10 +56,10 @@
- import net.minecraft.client.gui.GuiMainMenu;
- import net.minecraft.client.gui.GuiMemoryErrorScreen;
- import net.minecraft.client.gui.GuiMultiplayer;
--import net.minecraft.client.gui.GuiNewChat;
-+import net.pl3x.client.gui.GuiChatWindow;
- import net.minecraft.client.gui.GuiScreen;
- import net.minecraft.client.gui.GuiScreenWorking;
--import net.minecraft.client.gui.GuiSleepMP;
-+import net.pl3x.client.gui.GuiSleepChatBar;
- import net.minecraft.client.gui.GuiWinGame;
- import net.minecraft.client.gui.ScaledResolution;
- import net.minecraft.client.gui.ScreenChatOptions;
 @@ -344,7 +344,6 @@
          this.field_152355_az = (new YggdrasilAuthenticationService(this.field_110453_aa, UUID.randomUUID().toString())).createMinecraftSessionService();
          this.field_71449_j = p_i45547_1_.field_178745_a.field_178752_a;
@@ -108,15 +86,6 @@
          if (this.field_71474_y.field_74353_u && !this.field_71431_Q)
          {
              this.func_71352_k();
-@@ -607,7 +617,7 @@
-     private void func_175609_am() throws LWJGLException
-     {
-         Display.setResizable(true);
--        Display.setTitle("Minecraft 1.12.2");
-+        Display.setTitle("Pl3xForge 1.12.2");
- 
-         try
-         {
 @@ -748,21 +758,23 @@
          File file2 = new File(file1, "crash-" + (new SimpleDateFormat("yyyy-MM-dd_HH.mm.ss")).format(new Date()) + "-client.txt");
          Bootstrap.func_179870_a(p_71377_1_.func_71502_e());
@@ -156,7 +125,7 @@
          if (p_147108_1_ == null && this.field_71441_e == null)
          {
              p_147108_1_ = new GuiMainMenu();
-@@ -969,10 +976,21 @@
+@@ -969,6 +976,17 @@
              p_147108_1_ = new GuiGameOver((ITextComponent)null);
          }
  
@@ -174,11 +143,6 @@
          if (p_147108_1_ instanceof GuiMainMenu || p_147108_1_ instanceof GuiMultiplayer)
          {
              this.field_71474_y.field_74330_P = false;
--            this.field_71456_v.func_146158_b().func_146231_a(true);
-+            this.field_71456_v.getChatGUI().clearChatMessages(true);
-         }
- 
-         this.field_71462_r = p_147108_1_;
 @@ -1094,11 +1112,13 @@
  
          if (!this.field_71454_w)
@@ -251,19 +215,6 @@
          this.field_71424_I.func_76320_a("gui");
  
          if (!this.field_71445_n)
-@@ -1708,10 +1737,10 @@
-             }
-             else if (this.field_71439_g.func_70608_bn() && this.field_71441_e != null)
-             {
--                this.func_147108_a(new GuiSleepMP());
-+                this.func_147108_a(new GuiSleepChatBar());
-             }
-         }
--        else if (this.field_71462_r != null && this.field_71462_r instanceof GuiSleepMP && !this.field_71439_g.func_70608_bn())
-+        else if (this.field_71462_r != null && this.field_71462_r instanceof GuiSleepChatBar && !this.field_71439_g.func_70608_bn())
-         {
-             this.func_147108_a((GuiScreen)null);
-         }
 @@ -1877,6 +1906,7 @@
          }
  
@@ -280,59 +231,6 @@
          }
  
          this.func_184117_aA();
-@@ -2006,7 +2037,7 @@
-         {
-             if (this.field_71456_v != null)
-             {
--                this.field_71456_v.func_146158_b().func_146231_a(false);
-+                this.field_71456_v.getChatGUI().clearChatMessages(false);
-             }
- 
-             return true;
-@@ -2057,17 +2088,17 @@
-         else if (p_184122_1_ == 16)
-         {
-             this.func_190521_a("debug.help.message");
--            GuiNewChat guinewchat = this.field_71456_v.func_146158_b();
--            guinewchat.func_146227_a(new TextComponentTranslation("debug.reload_chunks.help", new Object[0]));
--            guinewchat.func_146227_a(new TextComponentTranslation("debug.show_hitboxes.help", new Object[0]));
--            guinewchat.func_146227_a(new TextComponentTranslation("debug.clear_chat.help", new Object[0]));
--            guinewchat.func_146227_a(new TextComponentTranslation("debug.cycle_renderdistance.help", new Object[0]));
--            guinewchat.func_146227_a(new TextComponentTranslation("debug.chunk_boundaries.help", new Object[0]));
--            guinewchat.func_146227_a(new TextComponentTranslation("debug.advanced_tooltips.help", new Object[0]));
--            guinewchat.func_146227_a(new TextComponentTranslation("debug.creative_spectator.help", new Object[0]));
--            guinewchat.func_146227_a(new TextComponentTranslation("debug.pause_focus.help", new Object[0]));
--            guinewchat.func_146227_a(new TextComponentTranslation("debug.help.help", new Object[0]));
--            guinewchat.func_146227_a(new TextComponentTranslation("debug.reload_resourcepacks.help", new Object[0]));
-+            GuiChatWindow guinewchat = this.field_71456_v.getChatGUI();
-+            guinewchat.printChatMessage(new TextComponentTranslation("debug.reload_chunks.help", new Object[0]));
-+            guinewchat.printChatMessage(new TextComponentTranslation("debug.show_hitboxes.help", new Object[0]));
-+            guinewchat.printChatMessage(new TextComponentTranslation("debug.clear_chat.help", new Object[0]));
-+            guinewchat.printChatMessage(new TextComponentTranslation("debug.cycle_renderdistance.help", new Object[0]));
-+            guinewchat.printChatMessage(new TextComponentTranslation("debug.chunk_boundaries.help", new Object[0]));
-+            guinewchat.printChatMessage(new TextComponentTranslation("debug.advanced_tooltips.help", new Object[0]));
-+            guinewchat.printChatMessage(new TextComponentTranslation("debug.creative_spectator.help", new Object[0]));
-+            guinewchat.printChatMessage(new TextComponentTranslation("debug.pause_focus.help", new Object[0]));
-+            guinewchat.printChatMessage(new TextComponentTranslation("debug.help.help", new Object[0]));
-+            guinewchat.printChatMessage(new TextComponentTranslation("debug.reload_resourcepacks.help", new Object[0]));
-             return true;
-         }
-         else if (p_184122_1_ == 20)
-@@ -2170,12 +2201,12 @@
-         {
-             while (this.field_71474_y.field_74310_D.func_151468_f())
-             {
--                this.func_147108_a(new GuiChat());
-+                this.func_147108_a(new GuiChatBar());
-             }
- 
-             if (this.field_71462_r == null && this.field_71474_y.field_74323_J.func_151468_f())
-             {
--                this.func_147108_a(new GuiChat("/"));
-+                this.func_147108_a(new GuiChatBar("/"));
-             }
-         }
- 
 @@ -2239,6 +2270,8 @@
      {
          while (Mouse.next())
@@ -342,7 +240,7 @@
              int i = Mouse.getEventButton();
              KeyBinding.func_74510_a(i - 100, Mouse.getEventButtonState());
  
-@@ -2294,16 +2327,18 @@
+@@ -2294,6 +2327,7 @@
                      this.field_71462_r.func_146274_d();
                  }
              }
@@ -350,11 +248,7 @@
          }
      }
  
-     private void func_190521_a(String p_190521_1_, Object... p_190521_2_)
-     {
--        this.field_71456_v.func_146158_b().func_146227_a((new TextComponentString("")).func_150257_a((new TextComponentTranslation("debug.prefix", new Object[0])).func_150255_a((new Style()).func_150238_a(TextFormatting.YELLOW).func_150227_a(Boolean.valueOf(true)))).func_150258_a(" ").func_150257_a(new TextComponentTranslation(p_190521_1_, p_190521_2_)));
-+        this.field_71456_v.getChatGUI().printChatMessage((new TextComponentString("")).func_150257_a((new TextComponentTranslation("debug.prefix", new Object[0])).func_150255_a((new Style()).func_150238_a(TextFormatting.YELLOW).func_150227_a(Boolean.valueOf(true)))).func_150258_a(" ").func_150257_a(new TextComponentTranslation(p_190521_1_, p_190521_2_)));
-     }
+@@ -2304,6 +2338,7 @@
  
      public void func_71371_a(String p_71371_1_, String p_71371_2_, @Nullable WorldSettings p_71371_3_)
      {
@@ -629,7 +523,7 @@
      }
  
      public boolean func_70002_Q()
-@@ -3181,13 +3093,13 @@
+@@ -3181,11 +3093,11 @@
              {
                  if (Keyboard.getEventKeyState())
                  {
@@ -641,11 +535,8 @@
 -                    else if (i == this.field_71474_y.field_151447_Z.func_151463_i())
 +                    else if (this.field_71474_y.field_151447_Z.isActiveAndMatches(i))
                      {
--                        this.field_71456_v.func_146158_b().func_146227_a(ScreenShotHelper.func_148260_a(this.field_71412_D, this.field_71443_c, this.field_71440_d, this.field_147124_at));
-+                        this.field_71456_v.getChatGUI().printChatMessage(ScreenShotHelper.func_148260_a(this.field_71412_D, this.field_71443_c, this.field_71440_d, this.field_147124_at));
+                         this.field_71456_v.func_146158_b().func_146227_a(ScreenShotHelper.func_148260_a(this.field_71412_D, this.field_71443_c, this.field_71440_d, this.field_147124_at));
                      }
-                     else if (i == 48 && GuiScreen.func_146271_m() && (this.field_71462_r == null || this.field_71462_r != null && !this.field_71462_r.func_193976_p()))
-                     {
 @@ -3199,6 +3111,7 @@
                          }
                      }

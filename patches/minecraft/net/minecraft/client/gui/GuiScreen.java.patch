@@ -43,8 +43,7 @@
 +        if (p_175281_1_.isEmpty()) return;
          if (p_175281_2_)
          {
--            this.field_146297_k.field_71456_v.func_146158_b().func_146239_a(p_175281_1_);
-+            this.field_146297_k.field_71456_v.getChatGUI().addToSentMessages(p_175281_1_);
+             this.field_146297_k.field_71456_v.func_146158_b().func_146239_a(p_175281_1_);
          }
 +        if (net.minecraftforge.client.ClientCommandHandler.instance.func_71556_a(field_146297_k.field_71439_g, p_175281_1_) != 0) return;
  

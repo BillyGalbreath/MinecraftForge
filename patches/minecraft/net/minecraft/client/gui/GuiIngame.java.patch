@@ -1,41 +1,6 @@
 --- ../src-base/minecraft/net/minecraft/client/gui/GuiIngame.java
 +++ ../src-work/minecraft/net/minecraft/client/gui/GuiIngame.java
-@@ -57,6 +57,7 @@
- import net.minecraft.world.border.WorldBorder;
- import net.minecraftforge.fml.relauncher.Side;
- import net.minecraftforge.fml.relauncher.SideOnly;
-+import net.pl3x.client.gui.GuiChatWindow;
- 
- @SideOnly(Side.CLIENT)
- public class GuiIngame extends Gui
-@@ -67,7 +68,7 @@
-     protected final Random field_73842_c = new Random();
-     protected final Minecraft field_73839_d;
-     protected final RenderItem field_73841_b;
--    protected final GuiNewChat field_73840_e;
-+    protected final GuiChatWindow field_73840_e;
-     protected int field_73837_f;
-     protected String field_73838_g = "";
-     protected int field_73845_h;
-@@ -98,7 +99,7 @@
-         this.field_73841_b = p_i46325_1_.func_175599_af();
-         this.field_175198_t = new GuiOverlayDebug(p_i46325_1_);
-         this.field_175197_u = new GuiSpectator(p_i46325_1_);
--        this.field_73840_e = new GuiNewChat(p_i46325_1_);
-+        this.field_73840_e = new GuiChatWindow(p_i46325_1_);
-         this.field_175196_v = new GuiPlayerTabOverlay(p_i46325_1_, this);
-         this.field_184050_w = new GuiBossOverlay(p_i46325_1_);
-         this.field_184049_t = new GuiSubtitleOverlay(p_i46325_1_);
-@@ -342,7 +343,7 @@
-         GlStateManager.func_179094_E();
-         GlStateManager.func_179109_b(0.0F, (float)(j - 48), 0.0F);
-         this.field_73839_d.field_71424_I.func_76320_a("chat");
--        this.field_73840_e.func_146230_a(this.field_73837_f);
-+        this.field_73840_e.drawChat(this.field_73837_f);
-         this.field_73839_d.field_71424_I.func_76319_b();
-         GlStateManager.func_179121_F();
-         scoreobjective1 = scoreboard.func_96539_a(0);
-@@ -379,7 +380,8 @@
+@@ -379,7 +379,8 @@
  
                  BlockPos blockpos = raytraceresult.func_178782_a();
  
@@ -45,7 +10,7 @@
                  {
                      return;
                  }
-@@ -449,7 +451,10 @@
+@@ -449,7 +450,10 @@
              {
                  Potion potion = potioneffect.func_188419_a();
  
@@ -57,7 +22,7 @@
                  {
                      int k = p_184048_1_.func_78326_a();
                      int l = 1;
-@@ -492,7 +497,10 @@
+@@ -492,7 +496,10 @@
                      }
  
                      GlStateManager.func_179131_c(1.0F, 1.0F, 1.0F, f);
@@ -68,12 +33,3 @@
                  }
              }
          }
-@@ -1271,7 +1279,7 @@
-         }
-     }
- 
--    public GuiNewChat func_146158_b()
-+    public GuiChatWindow getChatGUI()
-     {
-         return this.field_73840_e;
-     }

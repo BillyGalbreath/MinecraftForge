@@ -8,12 +8,7 @@
          return false;
      }
  
-@@ -444,10 +445,19 @@
-         }
-         else
-         {
--            this.field_71159_c.field_71456_v.func_146158_b().func_146227_a(p_146105_1_);
-+            this.field_71159_c.field_71456_v.getChatGUI().printChatMessage(p_146105_1_);
+@@ -448,6 +449,15 @@
          }
      }
  
@@ -79,15 +74,6 @@
      }
  
      public void func_70031_b(boolean p_70031_1_)
-@@ -536,7 +551,7 @@
- 
-     public void func_145747_a(ITextComponent p_145747_1_)
-     {
--        this.field_71159_c.field_71456_v.func_146158_b().func_146227_a(p_145747_1_);
-+        this.field_71159_c.field_71456_v.getChatGUI().printChatMessage(p_145747_1_);
-     }
- 
-     public boolean func_70003_b(int p_70003_1_, String p_70003_2_)
 @@ -563,7 +578,13 @@
  
      public void func_184185_a(SoundEvent p_184185_1_, float p_184185_2_, float p_184185_3_)
