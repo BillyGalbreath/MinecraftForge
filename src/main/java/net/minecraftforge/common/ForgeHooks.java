@@ -1083,6 +1083,13 @@ public class ForgeHooks
         return evt.isCanceled() ? evt.getCancellationResult() : null;
     }
 
+    public static EnumActionResult onItemLeftClick(EntityPlayer player, EnumHand hand)
+    {
+        PlayerInteractEvent.LeftClickItem evt = new PlayerInteractEvent.LeftClickItem(player, hand);
+        MinecraftForge.EVENT_BUS.post(evt);
+        return evt.isCanceled() ? evt.getCancellationResult() : null;
+    }
+
     public static PlayerInteractEvent.LeftClickBlock onLeftClickBlock(EntityPlayer player, BlockPos pos, EnumFacing face, Vec3d hitVec)
     {
         PlayerInteractEvent.LeftClickBlock evt = new PlayerInteractEvent.LeftClickBlock(player, pos, face, hitVec);

@@ -308,6 +308,22 @@ public class PlayerInteractEvent extends PlayerEvent
     }
 
     /**
+     * This event is fired on both sides before the player triggers {@link net.minecraft.item.Item#onItemLeftClick}.
+     * Note that this is NOT fired if the player is targeting a block {@link LeftClickBlock} or entity {@link EntityInteract} {@link EntityInteractSpecific}.
+     *
+     * Let result be the return value of {@link net.minecraft.item.Item#onItemLeftClick}, or {@link #cancellationResult} if the event is cancelled.
+     * If we are on the client and result is not {@link EnumActionResult#SUCCESS}, the client will then continue to other hands.
+     */
+    @Cancelable
+    public static class LeftClickItem extends PlayerInteractEvent
+    {
+        public LeftClickItem(EntityPlayer player, EnumHand hand)
+        {
+            super(player, hand, new BlockPos(player), null);
+        }
+    }
+
+    /**
      * This event is fired on the client side when the player left clicks empty space with any ItemStack.
      * The server is not aware of when the client left clicks empty space, you will need to tell the server yourself.
      * This event cannot be canceled.
