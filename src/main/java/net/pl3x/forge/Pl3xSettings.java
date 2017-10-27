@@ -1,4 +1,4 @@
-package net.pl3xforge;
+package net.pl3x.forge;
 
 import net.minecraft.client.Minecraft;
 

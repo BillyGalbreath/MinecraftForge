@@ -19,6 +19,7 @@
 /projects/
 /repo/
 /buildSrc
+/out/
 
 #Patch rejects
 /patches-/

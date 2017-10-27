@@ -14,7 +14,7 @@
  import net.minecraftforge.fml.relauncher.SideOnly;
 -import org.apache.logging.log4j.LogManager;
 -import org.apache.logging.log4j.Logger;
-+import net.pl3xforge.Pl3xSettings;
++import net.pl3x.forge.Pl3xSettings;
  import org.lwjgl.input.Keyboard;
  import org.lwjgl.input.Mouse;
  

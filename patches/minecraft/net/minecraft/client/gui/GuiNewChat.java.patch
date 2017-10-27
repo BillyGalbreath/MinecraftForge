@@ -14,7 +14,7 @@
  import net.minecraft.util.text.TextComponentString;
  import net.minecraftforge.fml.relauncher.Side;
  import net.minecraftforge.fml.relauncher.SideOnly;
-+import net.pl3xforge.Pl3xSettings;
++import net.pl3x.forge.Pl3xSettings;
  import org.apache.logging.log4j.LogManager;
  import org.apache.logging.log4j.Logger;
  

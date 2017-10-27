@@ -1,4 +1,4 @@
-package net.pl3xforge;
+package net.pl3x.forge.packet;
 
 import net.minecraft.network.Packet;
 import net.minecraft.network.PacketBuffer;
