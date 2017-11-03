@@ -9,6 +9,15 @@
  {
      private static final Logger field_184243_a = LogManager.getLogger();
      private static final List<ItemStack> field_190535_b = Collections.<ItemStack>emptyList();
+@@ -94,7 +94,7 @@
+     private static int field_70152_a;
+     private int field_145783_c;
+     public boolean field_70156_m;
+-    private final List<Entity> field_184244_h;
++    public final List<Entity> field_184244_h;
+     protected int field_184245_j;
+     private Entity field_184239_as;
+     public boolean field_98038_p;
 @@ -177,6 +177,11 @@
      private boolean field_184237_aG;
      private final double[] field_191505_aI;
