@@ -68,7 +68,7 @@
          CreativeTabs creativetabs = this.func_77640_w();
          return creativetabs != null && (p_194125_1_ == CreativeTabs.field_78027_g || p_194125_1_ == creativetabs);
      }
-@@ -435,11 +445,704 @@
+@@ -435,11 +441,704 @@
          return false;
      }
  
@@ -773,7 +773,15 @@
      public static void func_150900_l()
      {
          func_179214_a(Blocks.field_150350_a, new ItemAir(Blocks.field_150350_a));
-@@ -999,6 +1702,8 @@
+@@ -957,6 +1656,7 @@
+         func_179217_a(2265, "record_ward", (new ItemRecord("ward", SoundEvents.field_187848_ez)).func_77655_b("record"));
+         func_179217_a(2266, "record_11", (new ItemRecord("11", SoundEvents.field_187826_eo)).func_77655_b("record"));
+         func_179217_a(2267, "record_wait", (new ItemRecord("wait", SoundEvents.field_187846_ey)).func_77655_b("record"));
++        func_179217_a(2300, "hat_pilgrim", (new Item()).func_77655_b("hatPilgrim").func_77625_d(1));
+     }
+ 
+     private static void func_179216_c(Block p_179216_0_)
+@@ -999,6 +1699,8 @@
          private final float field_78010_h;
          private final float field_78011_i;
          private final int field_78008_j;
@@ -782,7 +790,7 @@
  
          private ToolMaterial(int p_i1874_3_, int p_i1874_4_, float p_i1874_5_, float p_i1874_6_, int p_i1874_7_)
          {
-@@ -1034,6 +1739,7 @@
+@@ -1034,6 +1736,7 @@
              return this.field_78008_j;
          }
  
@@ -790,7 +798,7 @@
          public Item func_150995_f()
          {
              if (this == WOOD)
-@@ -1057,5 +1763,21 @@
+@@ -1057,5 +1760,26 @@
                  return this == DIAMOND ? Items.field_151045_i : null;
              }
          }
@@ -811,4 +819,9 @@
 +            return repairMaterial;
 +        }
      }
++
++    public ActionResult<ItemStack> onItemLeftClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
++    {
++        return new ActionResult<ItemStack>(EnumActionResult.PASS, playerIn.func_184586_b(handIn));
++    }
  }

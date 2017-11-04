@@ -1,18 +1,10 @@
 --- ../src-base/minecraft/net/minecraft/network/EnumConnectionState.java
 +++ ../src-work/minecraft/net/minecraft/network/EnumConnectionState.java
-@@ -32,6 +32,7 @@
- import net.minecraft.network.play.client.CPacketPlayerDigging;
- import net.minecraft.network.play.client.CPacketPlayerTryUseItem;
- import net.minecraft.network.play.client.CPacketPlayerTryUseItemOnBlock;
-+import net.pl3x.forge.packet.CPacketPlayerLeftClickItem;
- import net.minecraft.network.play.client.CPacketRecipeInfo;
- import net.minecraft.network.play.client.CPacketResourcePackStatus;
- import net.minecraft.network.play.client.CPacketSeenAdvancements;
-@@ -248,6 +249,7 @@
+@@ -248,6 +248,7 @@
              this.func_179245_a(EnumPacketDirection.SERVERBOUND, CPacketSpectate.class);
              this.func_179245_a(EnumPacketDirection.SERVERBOUND, CPacketPlayerTryUseItemOnBlock.class);
              this.func_179245_a(EnumPacketDirection.SERVERBOUND, CPacketPlayerTryUseItem.class);
-+            this.func_179245_a(EnumPacketDirection.SERVERBOUND, CPacketPlayerLeftClickItem.class);
++            this.func_179245_a(EnumPacketDirection.SERVERBOUND, net.pl3x.forge.packet.CPacketPlayerLeftClickItem.class);
          }
      },
      STATUS(1)

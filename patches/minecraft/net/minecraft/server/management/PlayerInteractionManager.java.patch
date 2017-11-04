@@ -264,7 +264,7 @@
                  }
              }
          }
-@@ -453,4 +498,16 @@
+@@ -453,4 +498,63 @@
      {
          this.field_73092_a = p_73080_1_;
      }
@@ -279,5 +279,52 @@
 +    public void setBlockReachDistance(double distance)
 +    {
 +        field_73090_b.func_110148_a(EntityPlayer.REACH_DISTANCE).func_111128_a(distance);
++    }
++
++    public EnumActionResult processLeftClick(EntityPlayer player, World worldIn, ItemStack stack, EnumHand hand) {
++        if (this.field_73091_c == GameType.SPECTATOR)
++        {
++            return EnumActionResult.PASS;
++        }
++        else if (player.func_184811_cZ().func_185141_a(stack.func_77973_b()))
++        {
++            return EnumActionResult.PASS;
++        }
++        EnumActionResult cancelResult = net.minecraftforge.common.ForgeHooks.onItemLeftClick(player, hand);
++        if (cancelResult != null) return cancelResult;
++        int i = stack.func_190916_E();
++        int j = stack.func_77960_j();
++        ItemStack copyBeforeUse = stack.func_77946_l();
++        ActionResult<ItemStack> actionresult = stack.onItemLeftClick(worldIn, player, hand);
++        ItemStack itemstack = actionresult.func_188398_b();
++
++        if (itemstack == stack && itemstack.func_190916_E() == i && itemstack.func_77988_m() <= 0 && itemstack.func_77960_j() == j)
++        {
++            return actionresult.func_188397_a();
++        }
++        else if (actionresult.func_188397_a() == EnumActionResult.FAIL && itemstack.func_77988_m() > 0 && !player.func_184587_cr())
++        {
++            return actionresult.func_188397_a();
++        }
++
++        player.func_184611_a(hand, itemstack);
++
++        if (this.func_73083_d())
++        {
++            itemstack.func_190920_e(i);
++
++            if (itemstack.func_77984_f())
++            {
++                itemstack.func_77964_b(j);
++            }
++        }
++
++        if (itemstack.func_190926_b())
++        {
++            net.minecraftforge.event.ForgeEventFactory.onPlayerDestroyItem(player, copyBeforeUse, hand);
++            player.func_184611_a(hand, ItemStack.field_190927_a);
++        }
++
++        return actionresult.func_188397_a();
 +    }
  }

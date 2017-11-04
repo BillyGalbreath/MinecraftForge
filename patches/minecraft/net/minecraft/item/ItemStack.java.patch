@@ -81,7 +81,7 @@
          EnumActionResult enumactionresult = this.func_77973_b().func_180614_a(p_179546_1_, p_179546_2_, p_179546_3_, p_179546_4_, p_179546_5_, p_179546_6_, p_179546_7_, p_179546_8_);
  
          if (enumactionresult == EnumActionResult.SUCCESS)
-@@ -184,11 +194,29 @@
+@@ -184,6 +194,19 @@
          return enumactionresult;
      }
  
@@ -101,17 +101,7 @@
      public float func_150997_a(IBlockState p_150997_1_)
      {
          return this.func_77973_b().func_150893_a(this, p_150997_1_);
-     }
- 
-+    public ActionResult<ItemStack> onItemLeftClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
-+    {
-+        return this.func_77973_b().onItemLeftClick(worldIn, playerIn, hand);
-+    }
-+
-     public ActionResult<ItemStack> func_77957_a(World p_77957_1_, EntityPlayer p_77957_2_, EnumHand p_77957_3_)
-     {
-         return this.func_77973_b().func_77659_a(p_77957_1_, p_77957_2_, p_77957_3_);
-@@ -211,12 +239,18 @@
+@@ -211,12 +234,18 @@
              p_77955_1_.func_74782_a("tag", this.field_77990_d);
          }
  
@@ -131,7 +121,7 @@
      }
  
      public boolean func_77985_e()
-@@ -230,7 +264,7 @@
+@@ -230,7 +259,7 @@
          {
              return false;
          }
@@ -140,7 +130,7 @@
          {
              return false;
          }
-@@ -247,32 +281,27 @@
+@@ -247,32 +276,27 @@
  
      public boolean func_77951_h()
      {
@@ -178,7 +168,7 @@
      }
  
      public boolean func_96631_a(int p_96631_1_, Random p_96631_2_, @Nullable EntityPlayerMP p_96631_3_)
-@@ -309,8 +338,8 @@
+@@ -309,8 +333,8 @@
                  CriteriaTriggers.field_193132_s.func_193158_a(p_96631_3_, this, this.field_77991_e + p_96631_1_);
              }
  
@@ -189,7 +179,7 @@
          }
      }
  
-@@ -359,7 +388,7 @@
+@@ -359,7 +383,7 @@
  
      public boolean func_150998_b(IBlockState p_150998_1_)
      {
@@ -198,7 +188,7 @@
      }
  
      public boolean func_111282_a(EntityPlayer p_111282_1_, EntityLivingBase p_111282_2_, EnumHand p_111282_3_)
-@@ -369,7 +398,7 @@
+@@ -369,7 +393,7 @@
  
      public ItemStack func_77946_l()
      {
@@ -207,7 +197,7 @@
          itemstack.func_190915_d(this.func_190921_D());
  
          if (this.field_77990_d != null)
-@@ -394,7 +423,7 @@
+@@ -394,7 +418,7 @@
              }
              else
              {
@@ -216,7 +206,7 @@
              }
          }
          else
-@@ -435,7 +464,7 @@
+@@ -435,7 +459,7 @@
          }
          else
          {
@@ -225,7 +215,7 @@
          }
      }
  
-@@ -862,6 +891,7 @@
+@@ -862,6 +886,7 @@
              }
          }
  
@@ -233,7 +223,7 @@
          return list;
      }
  
-@@ -987,7 +1017,7 @@
+@@ -987,7 +1012,7 @@
          }
          else
          {
@@ -242,7 +232,7 @@
          }
  
          return multimap;
-@@ -1130,4 +1160,127 @@
+@@ -1130,4 +1155,132 @@
      {
          this.func_190917_f(-p_190918_1_);
      }
@@ -368,5 +358,10 @@
 +    public boolean doesSneakBypassUse(net.minecraft.world.IBlockAccess world, BlockPos pos, EntityPlayer player)
 +    {
 +        return this.func_190926_b() || this.func_77973_b().doesSneakBypassUse(this, world, pos, player);
++    }
++
++    public ActionResult<ItemStack> onItemLeftClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
++    {
++        return this.func_77973_b().onItemLeftClick(worldIn, playerIn, hand);
 +    }
  }

@@ -1,14 +1,6 @@
 --- ../src-base/minecraft/net/minecraft/network/NetHandlerPlayServer.java
 +++ ../src-work/minecraft/net/minecraft/network/NetHandlerPlayServer.java
-@@ -67,6 +67,7 @@
- import net.minecraft.network.play.client.CPacketPlayer;
- import net.minecraft.network.play.client.CPacketPlayerAbilities;
- import net.minecraft.network.play.client.CPacketPlayerDigging;
-+import net.pl3x.forge.packet.CPacketPlayerLeftClickItem;
- import net.minecraft.network.play.client.CPacketPlayerTryUseItem;
- import net.minecraft.network.play.client.CPacketPlayerTryUseItemOnBlock;
- import net.minecraft.network.play.client.CPacketRecipeInfo;
-@@ -671,7 +672,10 @@
+@@ -671,7 +671,10 @@
                  double d2 = this.field_147369_b.field_70161_v - ((double)blockpos.func_177952_p() + 0.5D);
                  double d3 = d0 * d0 + d1 * d1 + d2 * d2;
  
@@ -20,7 +12,7 @@
                  {
                      return;
                  }
-@@ -729,7 +733,9 @@
+@@ -729,7 +732,9 @@
  
          if (blockpos.func_177956_o() < this.field_147367_d.func_71207_Z() - 1 || enumfacing != EnumFacing.UP && blockpos.func_177956_o() < this.field_147367_d.func_71207_Z())
          {
@@ -31,11 +23,58 @@
              {
                  this.field_147369_b.field_71134_c.func_187251_a(this.field_147369_b, worldserver, itemstack, enumhand, blockpos, enumfacing, p_184337_1_.func_187026_d(), p_184337_1_.func_187025_e(), p_184337_1_.func_187020_f());
              }
-@@ -745,6 +751,20 @@
-         this.field_147369_b.field_71135_a.func_147359_a(new SPacketBlockChange(worldserver, blockpos.func_177972_a(enumfacing)));
-     }
+@@ -933,7 +938,9 @@
+             }
+             else
+             {
+-                ITextComponent itextcomponent = new TextComponentTranslation("chat.type.text", new Object[] {this.field_147369_b.func_145748_c_(), s});
++                ITextComponent itextcomponent = new TextComponentTranslation("chat.type.text", this.field_147369_b.func_145748_c_(), net.minecraftforge.common.ForgeHooks.newChatWithLinks(s));
++                itextcomponent = net.minecraftforge.common.ForgeHooks.onServerChatEvent(this, s, itextcomponent);
++                if (itextcomponent == null) return;
+                 this.field_147367_d.func_184103_al().func_148544_a(itextcomponent, false);
+             }
  
-+    public void processLeftClickItem(CPacketPlayerLeftClickItem packetIn)
+@@ -1066,6 +1073,7 @@
+                 else if (p_147340_1_.func_149565_c() == CPacketUseEntity.Action.INTERACT_AT)
+                 {
+                     EnumHand enumhand1 = p_147340_1_.func_186994_b();
++                    if(net.minecraftforge.common.ForgeHooks.onInteractEntityAt(field_147369_b, entity, p_147340_1_.func_179712_b(), enumhand1) != null) return;
+                     entity.func_184199_a(this.field_147369_b, p_147340_1_.func_179712_b(), enumhand1);
+                 }
+                 else if (p_147340_1_.func_149565_c() == CPacketUseEntity.Action.ATTACK)
+@@ -1106,7 +1114,7 @@
+                         return;
+                     }
+ 
+-                    this.field_147369_b = this.field_147367_d.func_184103_al().func_72368_a(this.field_147369_b, 0, false);
++                    this.field_147369_b = this.field_147367_d.func_184103_al().func_72368_a(this.field_147369_b, field_147369_b.field_71093_bK, false);
+ 
+                     if (this.field_147367_d.func_71199_h())
+                     {
+@@ -1149,7 +1157,7 @@
+             {
+                 ItemStack itemstack2 = this.field_147369_b.field_71070_bA.func_184996_a(p_147351_1_.func_149544_d(), p_147351_1_.func_149543_e(), p_147351_1_.func_186993_f(), this.field_147369_b);
+ 
+-                if (ItemStack.func_77989_b(p_147351_1_.func_149546_g(), itemstack2))
++                if (ItemStack.areItemStacksEqualUsingNBTShareTag(p_147351_1_.func_149546_g(), itemstack2))
+                 {
+                     this.field_147369_b.field_71135_a.func_147359_a(new SPacketConfirmTransaction(p_147351_1_.func_149548_c(), p_147351_1_.func_149547_f(), true));
+                     this.field_147369_b.field_71137_h = true;
+@@ -1298,7 +1306,7 @@
+ 
+             for (int i = 0; i < astring.length; ++i)
+             {
+-                tileentitysign.field_145915_a[i] = new TextComponentString(TextFormatting.func_110646_a(astring[i]));
++                tileentitysign.field_145915_a[i] = new TextComponentString(astring[i]);
+             }
+ 
+             tileentitysign.func_70296_d();
+@@ -1751,4 +1759,18 @@
+             }
+         }
+     }
++
++    public void processLeftClickItem(net.pl3x.forge.packet.CPacketPlayerLeftClickItem packetIn)
 +    {
 +        PacketThreadUtil.func_180031_a(packetIn, this, this.field_147369_b.func_71121_q());
 +        WorldServer worldserver = this.field_147367_d.func_71218_a(this.field_147369_b.field_71093_bK);
@@ -48,53 +87,4 @@
 +            this.field_147369_b.field_71134_c.processLeftClick(this.field_147369_b, worldserver, itemstack, enumhand);
 +        }
 +    }
-+
-     public void func_147346_a(CPacketPlayerTryUseItem p_147346_1_)
-     {
-         PacketThreadUtil.func_180031_a(p_147346_1_, this, this.field_147369_b.func_71121_q());
-@@ -933,7 +953,9 @@
-             }
-             else
-             {
--                ITextComponent itextcomponent = new TextComponentTranslation("chat.type.text", new Object[] {this.field_147369_b.func_145748_c_(), s});
-+                ITextComponent itextcomponent = new TextComponentTranslation("chat.type.text", this.field_147369_b.func_145748_c_(), net.minecraftforge.common.ForgeHooks.newChatWithLinks(s));
-+                itextcomponent = net.minecraftforge.common.ForgeHooks.onServerChatEvent(this, s, itextcomponent);
-+                if (itextcomponent == null) return;
-                 this.field_147367_d.func_184103_al().func_148544_a(itextcomponent, false);
-             }
- 
-@@ -1066,6 +1088,7 @@
-                 else if (p_147340_1_.func_149565_c() == CPacketUseEntity.Action.INTERACT_AT)
-                 {
-                     EnumHand enumhand1 = p_147340_1_.func_186994_b();
-+                    if(net.minecraftforge.common.ForgeHooks.onInteractEntityAt(field_147369_b, entity, p_147340_1_.func_179712_b(), enumhand1) != null) return;
-                     entity.func_184199_a(this.field_147369_b, p_147340_1_.func_179712_b(), enumhand1);
-                 }
-                 else if (p_147340_1_.func_149565_c() == CPacketUseEntity.Action.ATTACK)
-@@ -1106,7 +1129,7 @@
-                         return;
-                     }
- 
--                    this.field_147369_b = this.field_147367_d.func_184103_al().func_72368_a(this.field_147369_b, 0, false);
-+                    this.field_147369_b = this.field_147367_d.func_184103_al().func_72368_a(this.field_147369_b, field_147369_b.field_71093_bK, false);
- 
-                     if (this.field_147367_d.func_71199_h())
-                     {
-@@ -1149,7 +1172,7 @@
-             {
-                 ItemStack itemstack2 = this.field_147369_b.field_71070_bA.func_184996_a(p_147351_1_.func_149544_d(), p_147351_1_.func_149543_e(), p_147351_1_.func_186993_f(), this.field_147369_b);
- 
--                if (ItemStack.func_77989_b(p_147351_1_.func_149546_g(), itemstack2))
-+                if (ItemStack.areItemStacksEqualUsingNBTShareTag(p_147351_1_.func_149546_g(), itemstack2))
-                 {
-                     this.field_147369_b.field_71135_a.func_147359_a(new SPacketConfirmTransaction(p_147351_1_.func_149548_c(), p_147351_1_.func_149547_f(), true));
-                     this.field_147369_b.field_71137_h = true;
-@@ -1298,7 +1321,7 @@
- 
-             for (int i = 0; i < astring.length; ++i)
-             {
--                tileentitysign.field_145915_a[i] = new TextComponentString(TextFormatting.func_110646_a(astring[i]));
-+                tileentitysign.field_145915_a[i] = new TextComponentString(astring[i]);
-             }
- 
-             tileentitysign.func_70296_d();
+ }

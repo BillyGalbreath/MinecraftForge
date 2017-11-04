@@ -1,19 +1,9 @@
 --- ../src-base/minecraft/net/minecraft/network/play/INetHandlerPlayServer.java
 +++ ../src-work/minecraft/net/minecraft/network/play/INetHandlerPlayServer.java
-@@ -20,6 +20,7 @@
- import net.minecraft.network.play.client.CPacketPlayer;
- import net.minecraft.network.play.client.CPacketPlayerAbilities;
- import net.minecraft.network.play.client.CPacketPlayerDigging;
-+import net.pl3x.forge.packet.CPacketPlayerLeftClickItem;
- import net.minecraft.network.play.client.CPacketPlayerTryUseItem;
- import net.minecraft.network.play.client.CPacketPlayerTryUseItemOnBlock;
- import net.minecraft.network.play.client.CPacketRecipeInfo;
-@@ -78,6 +79,8 @@
+@@ -93,4 +93,6 @@
+     void func_191984_a(CPacketRecipeInfo p_191984_1_);
  
-     void func_184337_a(CPacketPlayerTryUseItemOnBlock p_184337_1_);
- 
-+    void processLeftClickItem(CPacketPlayerLeftClickItem packetIn);
+     void func_194027_a(CPacketSeenAdvancements p_194027_1_);
 +
-     void func_147346_a(CPacketPlayerTryUseItem p_147346_1_);
- 
-     void func_175088_a(CPacketSpectate p_175088_1_);
++    void processLeftClickItem(net.pl3x.forge.packet.CPacketPlayerLeftClickItem packetIn);
+ }
