@@ -8,7 +8,7 @@
 +        java.util.Calendar cal = java.util.Calendar.getInstance();
 +        cal.setTime(new java.util.Date());
 +        return cal.get(java.util.Calendar.MONTH) + 1 == 11 &&
-+                cal.get(java.util.Calendar.DAY_OF_MONTH) >= 2 &&
++                cal.get(java.util.Calendar.DAY_OF_MONTH) >= 23 &&
 +                cal.get(java.util.Calendar.DAY_OF_MONTH) <= 25;
 +    }
 +
