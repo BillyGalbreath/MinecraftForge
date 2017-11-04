@@ -1,0 +1,17 @@
+--- ../src-base/minecraft/net/minecraft/util/Util.java
++++ ../src-work/minecraft/net/minecraft/util/Util.java
+@@ -67,6 +67,14 @@
+         return p_184878_0_.get(p_184878_0_.size() - 1);
+     }
+ 
++    public static boolean isThanksgiving() {
++        java.util.Calendar cal = java.util.Calendar.getInstance();
++        cal.setTime(new java.util.Date());
++        return cal.get(java.util.Calendar.MONTH) + 1 == 11 &&
++                cal.get(java.util.Calendar.DAY_OF_MONTH) >= 2 &&
++                cal.get(java.util.Calendar.DAY_OF_MONTH) <= 25;
++    }
++
+     @SideOnly(Side.CLIENT)
+     public static enum EnumOS
+     {

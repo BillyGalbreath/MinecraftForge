@@ -1,0 +1,18 @@
+--- ../src-base/minecraft/net/minecraft/init/Items.java
++++ ../src-work/minecraft/net/minecraft/init/Items.java
+@@ -223,6 +223,7 @@
+     public static final Item field_190930_cZ;
+     public static final Item field_191525_da;
+     public static final Item field_192397_db;
++    public static final Item HAT_PILGRIM;
+ 
+     private static Item func_179554_a(String p_179554_0_)
+     {
+@@ -456,6 +457,7 @@
+             field_190930_cZ = func_179554_a("shulker_shell");
+             field_191525_da = func_179554_a("iron_nugget");
+             field_192397_db = func_179554_a("knowledge_book");
++            HAT_PILGRIM = func_179554_a("hat_pilgrim");
+         }
+     }
+ }

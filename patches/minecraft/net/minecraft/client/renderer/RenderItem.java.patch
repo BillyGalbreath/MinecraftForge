@@ -93,7 +93,15 @@
                  this.func_181565_a(bufferbuilder, p_180453_3_ + 2, p_180453_4_ + 13, 13, 2, 0, 0, 0, 255);
                  this.func_181565_a(bufferbuilder, p_180453_3_ + 2, p_180453_4_ + 13, i, 1, j >> 16 & 255, j >> 8 & 255, j & 255, 255);
                  GlStateManager.func_179147_l();
-@@ -1099,6 +1086,7 @@
+@@ -1067,6 +1054,7 @@
+         this.func_175047_a(Items.field_151085_cm, "record_ward");
+         this.func_175047_a(Items.field_151086_cn, "record_11");
+         this.func_175047_a(Items.field_151084_co, "record_wait");
++        this.func_175047_a(Items.HAT_PILGRIM, "hat_pilgrim");
+         this.func_175047_a(Items.field_179562_cC, "prismarine_shard");
+         this.func_175047_a(Items.field_179563_cD, "prismarine_crystals");
+         this.func_175047_a(Items.field_192397_db, "knowledge_book");
+@@ -1099,6 +1087,7 @@
          this.func_175029_a(Blocks.field_185779_df, TileEntityStructure.Mode.LOAD.func_185110_a(), "structure_block");
          this.func_175029_a(Blocks.field_185779_df, TileEntityStructure.Mode.CORNER.func_185110_a(), "structure_block");
          this.func_175029_a(Blocks.field_185779_df, TileEntityStructure.Mode.DATA.func_185110_a(), "structure_block");

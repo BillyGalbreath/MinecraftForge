@@ -204,8 +204,8 @@ public class VillagerRegistry
         public VillagerProfession(String name, String texture, String zombie)
         {
             this.name = new ResourceLocation(name);
-            this.texture = new ResourceLocation(texture);
-            this.zombie = new ResourceLocation(zombie);
+            this.texture = net.minecraft.util.Util.isThanksgiving() ? new ResourceLocation("minecraft:textures/entity/villager/thanksgiving_" + name.split(":")[1] + ".png") : new ResourceLocation(texture);
+            this.zombie = net.minecraft.util.Util.isThanksgiving() ? new ResourceLocation("minecraft:textures/entity/zombie_villager/thanksgiving_zombie_" + name.split(":")[1] + ".png") : new ResourceLocation(zombie);
             this.setRegistryName(this.name);
         }
 
@@ -336,6 +336,9 @@ public class VillagerRegistry
 
         if (prof != entity.getProfessionForge())
             entity.setProfession(prof);
+
+        entity.setItemStackToSlot(net.minecraft.inventory.EntityEquipmentSlot.HEAD, getHolidayHat(entity.getProfession()));
+        entity.setDropChance(net.minecraft.inventory.EntityEquipmentSlot.HEAD, 0.0F);
     }
 
     public static void onSetProfession(EntityZombieVillager entity, int network)
@@ -348,6 +351,9 @@ public class VillagerRegistry
 
         if (prof != entity.getForgeProfession())
             entity.setForgeProfession(prof);
+
+        entity.setItemStackToSlot(net.minecraft.inventory.EntityEquipmentSlot.HEAD, getHolidayHat(entity.getProfession()));
+        entity.setDropChance(net.minecraft.inventory.EntityEquipmentSlot.HEAD, 0.0F);
     }
 
     @Deprecated public static VillagerProfession getById(int network){ return INSTANCE.REGISTRY.getObjectById(network); }
@@ -361,5 +367,22 @@ public class VillagerRegistry
         //Moved to inner class to stop static initializer issues.
         //It is nasty I know but it's vanilla.
         private static final ITradeList[][][][] trades = EntityVillager.GET_TRADES_DONT_USE();
+    }
+
+    private static net.minecraft.item.ItemStack getHolidayHat(int prof) {
+        if (net.minecraft.util.Util.isThanksgiving())
+        {
+            switch (prof) {
+                case 0: // farmer
+                case 4: // butcher
+                case 5: // nitwit
+                    return net.minecraft.init.Items.FEATHER.getDefaultInstance();
+                case 1: // librarian
+                case 2: // priest
+                case 3: // smith
+                    return net.minecraft.init.Items.HAT_PILGRIM.getDefaultInstance();
+            }
+        }
+        return net.minecraft.item.ItemStack.EMPTY;
     }
 }
