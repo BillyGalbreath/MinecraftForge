@@ -1,0 +1,47 @@
+--- ../src-base/minecraft/net/minecraft/client/model/ModelBiped.java
++++ ../src-work/minecraft/net/minecraft/client/model/ModelBiped.java
+@@ -22,6 +22,7 @@
+     public ModelBiped.ArmPose field_187075_l;
+     public ModelBiped.ArmPose field_187076_m;
+     public boolean field_78117_n;
++    public boolean bigHead;
+ 
+     public ModelBiped()
+     {
+@@ -72,8 +73,15 @@
+         if (this.field_78091_s)
+         {
+             float f = 2.0F;
+-            GlStateManager.func_179152_a(0.75F, 0.75F, 0.75F);
+             GlStateManager.func_179109_b(0.0F, 16.0F * p_78088_7_, 0.0F);
++            if (bigHead)
++            {
++                GlStateManager.func_179152_a(1.2F, 1.2F, 1.2F);
++            }
++            else
++            {
++                GlStateManager.func_179152_a(0.75F, 0.75F, 0.75F);
++            }
+             this.field_78116_c.func_78785_a(p_78088_7_);
+             GlStateManager.func_179121_F();
+             GlStateManager.func_179094_E();
+@@ -92,8 +100,17 @@
+             {
+                 GlStateManager.func_179109_b(0.0F, 0.2F, 0.0F);
+             }
+-
+-            this.field_78116_c.func_78785_a(p_78088_7_);
++            if (bigHead)
++            {
++                GlStateManager.func_179094_E();
++                GlStateManager.func_179152_a(1.7F, 1.7F, 1.7F);
++                this.field_78116_c.func_78785_a(p_78088_7_);
++                GlStateManager.func_179121_F();
++            }
++            else
++            {
++                this.field_78116_c.func_78785_a(p_78088_7_);
++            }
+             this.field_78115_e.func_78785_a(p_78088_7_);
+             this.field_178723_h.func_78785_a(p_78088_7_);
+             this.field_178724_i.func_78785_a(p_78088_7_);
