@@ -1,26 +1,6 @@
 --- ../src-base/minecraft/net/minecraft/client/multiplayer/PlayerControllerMP.java
 +++ ../src-work/minecraft/net/minecraft/client/multiplayer/PlayerControllerMP.java
-@@ -14,11 +14,9 @@
- import net.minecraft.entity.Entity;
- import net.minecraft.entity.passive.AbstractHorse;
- import net.minecraft.entity.player.EntityPlayer;
--import net.minecraft.init.Blocks;
- import net.minecraft.inventory.ClickType;
- import net.minecraft.item.ItemBlock;
- import net.minecraft.item.ItemStack;
--import net.minecraft.item.ItemSword;
- import net.minecraft.item.crafting.IRecipe;
- import net.minecraft.network.PacketBuffer;
- import net.minecraft.network.play.client.CPacketClickWindow;
-@@ -28,6 +26,7 @@
- import net.minecraft.network.play.client.CPacketHeldItemChange;
- import net.minecraft.network.play.client.CPacketPlaceRecipe;
- import net.minecraft.network.play.client.CPacketPlayerDigging;
-+import net.pl3x.forge.packet.CPacketPlayerLeftClickItem;
- import net.minecraft.network.play.client.CPacketPlayerTryUseItem;
- import net.minecraft.network.play.client.CPacketPlayerTryUseItemOnBlock;
- import net.minecraft.network.play.client.CPacketUseEntity;
-@@ -126,10 +125,16 @@
+@@ -126,10 +126,16 @@
              }
          }
  
@@ -38,7 +18,7 @@
          else
          {
              World world = this.field_78776_a.field_71441_e;
-@@ -147,19 +152,13 @@
+@@ -147,19 +153,13 @@
              else
              {
                  world.func_175718_b(2001, p_187103_1_, Block.func_176210_f(iblockstate));
@@ -59,7 +39,7 @@
  
                      if (!itemstack1.func_190926_b())
                      {
-@@ -167,11 +166,18 @@
+@@ -167,11 +167,18 @@
  
                          if (itemstack1.func_190926_b())
                          {
@@ -78,7 +58,7 @@
                  return flag;
              }
          }
-@@ -212,6 +218,7 @@
+@@ -212,6 +219,7 @@
              {
                  this.field_78776_a.func_193032_ao().func_193294_a(this.field_78776_a.field_71441_e, p_180511_1_, this.field_78776_a.field_71441_e.func_180495_p(p_180511_1_), 1.0F);
                  this.field_78774_b.func_147297_a(new CPacketPlayerDigging(CPacketPlayerDigging.Action.START_DESTROY_BLOCK, p_180511_1_, p_180511_2_));
@@ -86,7 +66,7 @@
                  func_178891_a(this.field_78776_a, this, p_180511_1_, p_180511_2_);
                  this.field_78781_i = 5;
              }
-@@ -221,6 +228,7 @@
+@@ -221,6 +229,7 @@
                  {
                      this.field_78774_b.func_147297_a(new CPacketPlayerDigging(CPacketPlayerDigging.Action.ABORT_DESTROY_BLOCK, this.field_178895_c, p_180511_2_));
                  }
@@ -94,7 +74,7 @@
  
                  IBlockState iblockstate = this.field_78776_a.field_71441_e.func_180495_p(p_180511_1_);
                  this.field_78776_a.func_193032_ao().func_193294_a(this.field_78776_a.field_71441_e, p_180511_1_, iblockstate, 0.0F);
-@@ -229,9 +237,11 @@
+@@ -229,9 +238,11 @@
  
                  if (flag && this.field_78770_f == 0.0F)
                  {
@@ -106,7 +86,7 @@
                  if (flag && iblockstate.func_185903_a(this.field_78776_a.field_71439_g, this.field_78776_a.field_71439_g.field_70170_p, p_180511_1_) >= 1.0F)
                  {
                      this.func_187103_a(p_180511_1_);
-@@ -297,7 +307,7 @@
+@@ -297,7 +308,7 @@
  
                  if (this.field_78780_h % 4.0F == 0.0F)
                  {
@@ -115,7 +95,17 @@
                      this.field_78776_a.func_147118_V().func_147682_a(new PositionedSoundRecord(soundtype.func_185846_f(), SoundCategory.NEUTRAL, (soundtype.func_185843_a() + 1.0F) / 8.0F, soundtype.func_185847_b() * 0.5F, p_180512_1_));
                  }
  
-@@ -350,7 +360,7 @@
+@@ -326,7 +337,8 @@
+
+     public float func_78757_d()
+     {
+-        return this.field_78779_k.func_77145_d() ? 5.0F : 4.5F;
++        float attrib = (float) field_78776_a.field_71439_g.func_110148_a(EntityPlayer.REACH_DISTANCE).func_111126_e();
++        return this.field_78779_k.func_77145_d() ? attrib : attrib - 0.5F;
+     }
+
+     public void func_78765_e()
+@@ -350,7 +362,7 @@
  
          if (!this.field_85183_f.func_190926_b() && !itemstack.func_190926_b())
          {
@@ -124,7 +114,7 @@
          }
  
          return p_178893_1_.equals(this.field_178895_c) && flag;
-@@ -382,13 +392,34 @@
+@@ -382,13 +394,34 @@
          }
          else
          {
@@ -161,7 +151,7 @@
                  }
  
                  if (!flag && itemstack.func_77973_b() instanceof ItemBlock)
-@@ -404,7 +435,7 @@
+@@ -404,7 +437,7 @@
  
              this.field_78774_b.func_147297_a(new CPacketPlayerTryUseItemOnBlock(p_187099_3_, p_187099_4_, p_187099_6_, f, f1, f2));
  
@@ -170,7 +160,7 @@
              {
                  if (itemstack.func_190926_b())
                  {
-@@ -430,14 +461,20 @@
+@@ -430,14 +463,20 @@
                      {
                          int i = itemstack.func_77960_j();
                          int j = itemstack.func_190916_E();
@@ -192,48 +182,7 @@
                      }
                  }
              }
-@@ -448,6 +485,40 @@
-         }
-     }
- 
-+    public EnumActionResult processLeftClick(EntityPlayer player, World worldIn, EnumHand hand)
-+    {
-+        if (this.field_78779_k == GameType.SPECTATOR)
-+        {
-+            return EnumActionResult.PASS;
-+        }
-+
-+        this.func_78750_j();
-+        this.field_78774_b.func_147297_a(new CPacketPlayerLeftClickItem(hand));
-+        ItemStack itemstack = player.func_184586_b(hand);
-+
-+        if (player.func_184811_cZ().func_185141_a(itemstack.func_77973_b()))
-+        {
-+            return EnumActionResult.PASS;
-+        }
-+
-+        EnumActionResult cancelResult = net.minecraftforge.common.ForgeHooks.onItemLeftClick(player, hand);
-+        if (cancelResult != null) return cancelResult;
-+        int i = itemstack.func_190916_E();
-+        ActionResult<ItemStack> actionresult = itemstack.onItemLeftClick(worldIn, player, hand);
-+        ItemStack itemstack1 = actionresult.func_188398_b();
-+
-+        if (itemstack1 != itemstack || itemstack1.func_190916_E() != i)
-+        {
-+            player.func_184611_a(hand, itemstack1);
-+            if (itemstack1.func_190926_b())
-+            {
-+                net.minecraftforge.event.ForgeEventFactory.onPlayerDestroyItem(player, itemstack, hand);
-+            }
-+        }
-+
-+        return actionresult.func_188397_a();
-+    }
-+
-     public EnumActionResult func_187101_a(EntityPlayer p_187101_1_, World p_187101_2_, EnumHand p_187101_3_)
-     {
-         if (this.field_78779_k == GameType.SPECTATOR)
-@@ -466,6 +537,8 @@
+@@ -466,6 +505,8 @@
              }
              else
              {
@@ -242,7 +191,7 @@
                  int i = itemstack.func_190916_E();
                  ActionResult<ItemStack> actionresult = itemstack.func_77957_a(p_187101_2_, p_187101_1_, p_187101_3_);
                  ItemStack itemstack1 = actionresult.func_188398_b();
-@@ -473,6 +546,10 @@
+@@ -473,6 +514,10 @@
                  if (itemstack1 != itemstack || itemstack1.func_190916_E() != i)
                  {
                      p_187101_1_.func_184611_a(p_187101_3_, itemstack1);
@@ -253,7 +202,7 @@
                  }
  
                  return actionresult.func_188397_a();
-@@ -509,6 +586,9 @@
+@@ -509,6 +554,9 @@
          this.func_78750_j();
          Vec3d vec3d = new Vec3d(p_187102_3_.field_72307_f.field_72450_a - p_187102_2_.field_70165_t, p_187102_3_.field_72307_f.field_72448_b - p_187102_2_.field_70163_u, p_187102_3_.field_72307_f.field_72449_c - p_187102_2_.field_70161_v);
          this.field_78774_b.func_147297_a(new CPacketUseEntity(p_187102_2_, p_187102_4_, vec3d));

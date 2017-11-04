@@ -14,19 +14,7 @@
      private static final IItemPropertyGetter field_185046_b = new IItemPropertyGetter()
      {
          @SideOnly(Side.CLIENT)
-@@ -187,6 +187,11 @@
-         return 1.0F;
-     }
- 
-+    public ActionResult<ItemStack> onItemLeftClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
-+    {
-+        return new ActionResult<ItemStack>(EnumActionResult.PASS, playerIn.func_184586_b(handIn));
-+    }
-+
-     public ActionResult<ItemStack> func_77659_a(World p_77659_1_, EntityPlayer p_77659_2_, EnumHand p_77659_3_)
-     {
-         return new ActionResult<ItemStack>(EnumActionResult.PASS, p_77659_2_.func_184586_b(p_77659_3_));
-@@ -197,6 +202,7 @@
+@@ -197,6 +197,7 @@
          return p_77654_1_;
      }
  
@@ -34,7 +22,7 @@
      public int func_77639_j()
      {
          return this.field_77777_bU;
-@@ -218,6 +224,7 @@
+@@ -218,6 +219,7 @@
          return this;
      }
  
@@ -42,7 +30,7 @@
      public int func_77612_l()
      {
          return this.field_77699_b;
-@@ -317,6 +324,7 @@
+@@ -317,6 +319,7 @@
          return this.field_77700_c;
      }
  
@@ -50,7 +38,7 @@
      public boolean func_77634_r()
      {
          return this.field_77700_c != null;
-@@ -372,7 +380,7 @@
+@@ -372,7 +375,7 @@
  
      public boolean func_77616_k(ItemStack p_77616_1_)
      {
@@ -59,20 +47,18 @@
      }
  
      protected RayTraceResult func_77621_a(World p_77621_1_, EntityPlayer p_77621_2_, boolean p_77621_3_)
-@@ -390,7 +398,11 @@
+@@ -389,8 +392,8 @@
+         float f5 = MathHelper.func_76126_a(-f * 0.017453292F);
          float f6 = f3 * f4;
          float f7 = f2 * f4;
-         double d3 = 5.0D;
+-        double d3 = 5.0D;
 -        Vec3d vec3d1 = vec3d.func_72441_c((double)f6 * 5.0D, (double)f5 * 5.0D, (double)f7 * 5.0D);
-+        if (p_77621_2_ instanceof net.minecraft.entity.player.EntityPlayerMP)
-+        {
-+            d3 = ((net.minecraft.entity.player.EntityPlayerMP)p_77621_2_).field_71134_c.getBlockReachDistance();
-+        }
++        double d3 = p_77621_2_.func_110148_a(EntityPlayer.REACH_DISTANCE).func_111126_e();
 +        Vec3d vec3d1 = vec3d.func_72441_c((double)f6 * d3, (double)f5 * d3, (double)f7 * d3);
          return p_77621_1_.func_147447_a(vec3d, vec3d1, p_77621_3_, !p_77621_3_, false);
      }
  
-@@ -409,6 +421,9 @@
+@@ -409,6 +412,9 @@
  
      protected boolean func_194125_a(CreativeTabs p_194125_1_)
      {
@@ -82,7 +68,7 @@
          CreativeTabs creativetabs = this.func_77640_w();
          return creativetabs != null && (p_194125_1_ == CreativeTabs.field_78027_g || p_194125_1_ == creativetabs);
      }
-@@ -435,11 +450,704 @@
+@@ -435,11 +445,704 @@
          return false;
      }
  
@@ -787,15 +773,7 @@
      public static void func_150900_l()
      {
          func_179214_a(Blocks.field_150350_a, new ItemAir(Blocks.field_150350_a));
-@@ -957,6 +1665,7 @@
-         func_179217_a(2265, "record_ward", (new ItemRecord("ward", SoundEvents.field_187848_ez)).func_77655_b("record"));
-         func_179217_a(2266, "record_11", (new ItemRecord("11", SoundEvents.field_187826_eo)).func_77655_b("record"));
-         func_179217_a(2267, "record_wait", (new ItemRecord("wait", SoundEvents.field_187846_ey)).func_77655_b("record"));
-+        func_179217_a(2300, "hat_pilgrim", (new Item()).func_77655_b("hatPilgrim").func_77625_d(1));
-     }
- 
-     private static void func_179216_c(Block p_179216_0_)
-@@ -999,6 +1708,8 @@
+@@ -999,6 +1702,8 @@
          private final float field_78010_h;
          private final float field_78011_i;
          private final int field_78008_j;
@@ -804,7 +782,7 @@
  
          private ToolMaterial(int p_i1874_3_, int p_i1874_4_, float p_i1874_5_, float p_i1874_6_, int p_i1874_7_)
          {
-@@ -1034,6 +1745,7 @@
+@@ -1034,6 +1739,7 @@
              return this.field_78008_j;
          }
  
@@ -812,7 +790,7 @@
          public Item func_150995_f()
          {
              if (this == WOOD)
-@@ -1057,5 +1769,21 @@
+@@ -1057,5 +1763,21 @@
                  return this == DIAMOND ? Items.field_151045_i : null;
              }
          }
