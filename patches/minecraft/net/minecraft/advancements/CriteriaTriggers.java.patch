@@ -1,0 +1,11 @@
+--- ../src-base/minecraft/net/minecraft/advancements/CriteriaTriggers.java
++++ ../src-work/minecraft/net/minecraft/advancements/CriteriaTriggers.java
+@@ -63,7 +63,7 @@
+     public static final UsedTotemTrigger field_193130_A = (UsedTotemTrigger)func_192118_a(new UsedTotemTrigger());
+     public static final NetherTravelTrigger field_193131_B = (NetherTravelTrigger)func_192118_a(new NetherTravelTrigger());
+ 
+-    private static <T extends ICriterionTrigger> T func_192118_a(T p_192118_0_)
++    public static <T extends ICriterionTrigger> T func_192118_a(T p_192118_0_)
+     {
+         if (field_192139_s.containsKey(p_192118_0_.func_192163_a()))
+         {
