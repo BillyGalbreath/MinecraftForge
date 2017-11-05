@@ -8,17 +8,15 @@
  
      public GuiAdvancementTab(Minecraft p_i47589_1_, GuiScreenAdvancements p_i47589_2_, AdvancementTabType p_i47589_3_, int p_i47589_4_, Advancement p_i47589_5_, DisplayInfo p_i47589_6_)
      {
-@@ -82,8 +83,8 @@
+@@ -82,7 +83,7 @@
          }
  
          GlStateManager.func_179143_c(518);
 -        func_73734_a(0, 0, 234, 113, -16777216);
--        GlStateManager.func_179143_c(515);
-+        //drawRect(0, 0, 234, 113, -16777216);
-+        //GlStateManager.depthFunc(515); // moved to GuiAdvancementTab
++        func_73734_a(0, 0, 234, 113, 0x1a000000);
+         GlStateManager.func_179143_c(515);
          ResourceLocation resourcelocation = this.field_191806_i.func_192293_c();
  
-         if (resourcelocation != null)
 @@ -95,17 +96,17 @@
              this.field_191802_a.func_110434_K().func_110577_a(TextureManager.field_194008_a);
          }
