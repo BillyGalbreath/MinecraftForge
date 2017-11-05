@@ -1,0 +1,10 @@
+--- ../src-base/minecraft/net/minecraft/client/gui/advancements/GuiAdvancement.java
++++ ../src-work/minecraft/net/minecraft/client/gui/advancements/GuiAdvancement.java
+@@ -185,6 +185,7 @@
+             GlStateManager.func_179147_l();
+             this.func_73729_b(p_191817_1_ + this.field_191837_o + 3, p_191817_2_ + this.field_191826_p, this.field_191830_h.func_192291_d().func_192309_b(), 128 + advancementstate.func_192667_a() * 26, 26, 26);
+             RenderHelper.func_74520_c();
++            GlStateManager.func_179143_c(515);
+             this.field_191833_k.func_175599_af().func_184391_a((EntityLivingBase)null, this.field_191830_h.func_192298_b(), p_191817_1_ + this.field_191837_o + 8, p_191817_2_ + this.field_191826_p + 5);
+         }
+ 
