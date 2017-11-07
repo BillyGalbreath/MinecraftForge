@@ -472,7 +472,7 @@
  
          if (this.func_70608_bn())
          {
-@@ -2421,6 +2533,168 @@
+@@ -2421,6 +2533,173 @@
          return this.field_71075_bZ.field_75098_d && this.func_70003_b(2, "");
      }
  
@@ -489,7 +489,12 @@
 +     */
 +    public void openGui(Object mod, int modGuiId, World world, int x, int y, int z)
 +    {
-+        net.minecraftforge.fml.common.network.internal.FMLNetworkHandler.openGui(this, mod, modGuiId, world, x, y, z);
++        openGui(mod, modGuiId, world, x, y, z, -1);
++    }
++
++    public void openGui(Object mod, int modGuiId, World world, int x, int y, int z, int entityId)
++    {
++        net.minecraftforge.fml.common.network.internal.FMLNetworkHandler.openGui(this, mod, modGuiId, world, x, y, z, entityId);
 +    }
 +
 +
