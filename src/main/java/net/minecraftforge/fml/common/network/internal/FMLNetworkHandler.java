@@ -78,11 +78,6 @@ public class FMLNetworkHandler
         dispatcher.clientToServerHandshake();
     }
 
-    public static void openGui(EntityPlayer entityPlayer, Object mod, int modGuiId, World world, int x, int y, int z)
-    {
-        openGui(entityPlayer, mod, modGuiId, world, x, y, z, -1);
-    }
-
     public static void openGui(EntityPlayer entityPlayer, Object mod, int modGuiId, World world, int x, int y, int z, int entityId)
     {
         ModContainer mc = FMLCommonHandler.instance().findContainerFor(mod);
