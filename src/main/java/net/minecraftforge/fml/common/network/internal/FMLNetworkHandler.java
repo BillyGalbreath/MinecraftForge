@@ -80,17 +80,22 @@ public class FMLNetworkHandler
 
     public static void openGui(EntityPlayer entityPlayer, Object mod, int modGuiId, World world, int x, int y, int z)
     {
+        openGui(entityPlayer, mod, modGuiId, world, x, y, z, -1);
+    }
+
+    public static void openGui(EntityPlayer entityPlayer, Object mod, int modGuiId, World world, int x, int y, int z, int entityId)
+    {
         ModContainer mc = FMLCommonHandler.instance().findContainerFor(mod);
         if (entityPlayer instanceof EntityPlayerMP && !(entityPlayer instanceof FakePlayer))
         {
             EntityPlayerMP entityPlayerMP = (EntityPlayerMP) entityPlayer;
-            Container remoteGuiContainer = NetworkRegistry.INSTANCE.getRemoteGuiContainer(mc, entityPlayerMP, modGuiId, world, x, y, z);
+            Container remoteGuiContainer = NetworkRegistry.INSTANCE.getRemoteGuiContainer(mc, entityPlayerMP, modGuiId, world, x, y, z, entityId);
             if (remoteGuiContainer != null)
             {
                 entityPlayerMP.getNextWindowId();
                 entityPlayerMP.closeContainer();
                 int windowId = entityPlayerMP.currentWindowId;
-                FMLMessage.OpenGui openGui = new FMLMessage.OpenGui(windowId, mc.getModId(), modGuiId, x, y, z);
+                FMLMessage.OpenGui openGui = new FMLMessage.OpenGui(windowId, mc.getModId(), modGuiId, x, y, z, entityId);
                 EmbeddedChannel embeddedChannel = channelPair.get(Side.SERVER);
                 embeddedChannel.attr(FMLOutboundHandler.FML_MESSAGETARGET).set(OutboundTarget.PLAYER);
                 embeddedChannel.attr(FMLOutboundHandler.FML_MESSAGETARGETARGS).set(entityPlayerMP);
@@ -107,7 +112,7 @@ public class FMLNetworkHandler
         }
         else if (FMLCommonHandler.instance().getSide().equals(Side.CLIENT))
         {
-            Object guiContainer = NetworkRegistry.INSTANCE.getLocalGuiContainer(mc, entityPlayer, modGuiId, world, x, y, z);
+            Object guiContainer = NetworkRegistry.INSTANCE.getLocalGuiContainer(mc, entityPlayer, modGuiId, world, x, y, z, entityId);
             FMLCommonHandler.instance().showGuiScreen(guiContainer);
         }
         else

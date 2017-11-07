@@ -65,9 +65,10 @@ public abstract class FMLMessage {
         int x;
         int y;
         int z;
+        int entityId;
 
         public OpenGui() {}
-        OpenGui(int windowId, String modId, int modGuiId, int x, int y, int z)
+        OpenGui(int windowId, String modId, int modGuiId, int x, int y, int z, int entityId)
         {
             this.windowId = windowId;
             this.modId = modId;
@@ -75,6 +76,7 @@ public abstract class FMLMessage {
             this.x = x;
             this.y = y;
             this.z = z;
+            this.entityId = entityId;
         }
 
         @Override
@@ -86,6 +88,7 @@ public abstract class FMLMessage {
             buf.writeInt(x);
             buf.writeInt(y);
             buf.writeInt(z);
+            buf.writeInt(entityId);
         }
 
         @Override
@@ -97,6 +100,7 @@ public abstract class FMLMessage {
             x = buf.readInt();
             y = buf.readInt();
             z = buf.readInt();
+            entityId = buf.readInt();
         }
     }
 

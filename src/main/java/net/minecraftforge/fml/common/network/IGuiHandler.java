@@ -35,10 +35,11 @@ public interface IGuiHandler
      * @param x X Position
      * @param y Y Position
      * @param z Z Position
+     * @param entityId Entity clicked on (-1 if no entity)
      * @return A GuiScreen/Container to be displayed to the user, null if none.
      */
     @Nullable
-    Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z);
+    Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z, int entityId);
 
     /**
      * Returns a Container to be displayed to the user. On the client side, this
@@ -51,8 +52,9 @@ public interface IGuiHandler
      * @param x X Position
      * @param y Y Position
      * @param z Z Position
+     * @param entityId Entity clicked on (-1 if no entity)
      * @return A GuiScreen/Container to be displayed to the user, null if none.
      */
     @Nullable
-    Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z);
+    Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z, int entityId);
 }

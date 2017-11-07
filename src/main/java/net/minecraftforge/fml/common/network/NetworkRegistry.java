@@ -245,13 +245,13 @@ public enum NetworkRegistry
      * @return The server side GUI object (An instance of {@link Container})
      */
     @Nullable
-    public Container getRemoteGuiContainer(ModContainer mc, EntityPlayerMP player, int modGuiId, World world, int x, int y, int z)
+    public Container getRemoteGuiContainer(ModContainer mc, EntityPlayerMP player, int modGuiId, World world, int x, int y, int z, int entityId)
     {
         IGuiHandler handler = serverGuiHandlers.get(mc);
 
         if (handler != null)
         {
-            return (Container)handler.getServerGuiElement(modGuiId, player, world, x, y, z);
+            return (Container)handler.getServerGuiElement(modGuiId, player, world, x, y, z, entityId);
         }
         else
         {
@@ -271,10 +271,10 @@ public enum NetworkRegistry
      * @return The client side GUI object (An instance of {@link net.minecraft.client.gui.Gui})
      */
     @Nullable
-    public Object getLocalGuiContainer(ModContainer mc, EntityPlayer player, int modGuiId, World world, int x, int y, int z)
+    public Object getLocalGuiContainer(ModContainer mc, EntityPlayer player, int modGuiId, World world, int x, int y, int z, int entityId)
     {
         IGuiHandler handler = clientGuiHandlers.get(mc);
-        return handler.getClientGuiElement(modGuiId, player, world, x, y, z);
+        return handler.getClientGuiElement(modGuiId, player, world, x, y, z, entityId);
     }
 
     /**
