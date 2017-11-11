@@ -1,0 +1,16 @@
+--- ../src-base/minecraft/net/minecraft/world/end/DragonFightManager.java
++++ ../src-work/minecraft/net/minecraft/world/end/DragonFightManager.java
+@@ -398,10 +398,10 @@
+             this.func_186094_a(true);
+             this.func_186097_l();
+ 
+-            if (!this.field_186118_l)
+-            {
++            //if (!this.previouslyKilled)
++            //{
+                 this.field_186110_d.func_175656_a(this.field_186110_d.func_175645_m(WorldGenEndPodium.field_186139_a), Blocks.field_150380_bt.func_176223_P());
+-            }
++            //}
+ 
+             this.field_186118_l = true;
+             this.field_186117_k = true;
