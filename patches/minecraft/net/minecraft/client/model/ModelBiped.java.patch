@@ -8,7 +8,7 @@
  
      public ModelBiped()
      {
-@@ -92,8 +93,17 @@
+@@ -92,14 +93,33 @@
              {
                  GlStateManager.func_179109_b(0.0F, 0.2F, 0.0F);
              }
@@ -28,3 +28,20 @@
              this.field_78115_e.func_78785_a(p_78088_7_);
              this.field_178723_h.func_78785_a(p_78088_7_);
              this.field_178724_i.func_78785_a(p_78088_7_);
+             this.field_178721_j.func_78785_a(p_78088_7_);
+             this.field_178722_k.func_78785_a(p_78088_7_);
+-            this.field_178720_f.func_78785_a(p_78088_7_);
++            if (bigHead)
++            {
++                GlStateManager.func_179094_E();
++                GlStateManager.func_179152_a(1.7F, 1.7F, 1.7F);
++                this.field_178720_f.func_78785_a(p_78088_7_);
++                GlStateManager.func_179121_F();
++            }
++            else
++            {
++                this.field_178720_f.func_78785_a(p_78088_7_);
++            }
+         }
+ 
+         GlStateManager.func_179121_F();
