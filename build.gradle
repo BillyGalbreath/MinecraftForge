@@ -349,28 +349,29 @@ String getVersionFromJava(File file)
             s = s.replace('=', ' ').replace("Version", "").replaceAll(" +", " ").trim();
             String[] pts = s.split(" ");
 
-            if (pts[0].equals("major")) major = pts[pts.length - 1];
+            if (pts[0] == "major") major = pts[pts.length - 1];
             else if (pts[0] == "minor") minor = pts[pts.length - 1];
             else if (pts[0] == "revision") revision = pts[pts.length - 1];
+            else if (pts[0] == "build") build = pts[pts.length - 1];
         }
     }
 
-    build = System.getenv("BUILD_NUMBER") ?: project.ext.properties.buildNumber ?: 0
+    String pl3x = System.getenv("BUILD_NUMBER") ?: project.ext.properties.buildNumber ?: 0
 
 
-    String branch = null;
-    if (!System.getenv().containsKey("GIT_BRANCH"))
-    {
-        // TODO: use grgit - Tried to switch 07/07/16 - jgit broken on windows?
-        branch = "git rev-parse --abbrev-ref HEAD".execute().text.trim()
-    }
-    else
-    {
-        branch = System.getenv("GIT_BRANCH");
-        branch = branch.substring(branch.lastIndexOf('/') + 1);
-    }
+    //String branch = null;
+    //if (!System.getenv().containsKey("GIT_BRANCH"))
+    //{
+    //    // TODO: use grgit - Tried to switch 07/07/16 - jgit broken on windows?
+    //    branch = "git rev-parse --abbrev-ref HEAD".execute().text.trim()
+    //}
+    //else
+    //{
+    //    branch = System.getenv("GIT_BRANCH");
+    //    branch = branch.substring(branch.lastIndexOf('/') + 1);
+    //}
 
-    def out = "${minecraft.version.replace('-', '_')}-$major.$minor.$revision.$build"
+    def out = "${minecraft.version.replace('-', '_')}-$major.$minor.$revision.$build.$pl3x"
 
     //if (branch && branch != 'master' && branch != 'HEAD' && branch != minecraft.version && branch != minecraft.version + '.0')
     //{
