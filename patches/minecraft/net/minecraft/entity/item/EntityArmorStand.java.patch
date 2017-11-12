@@ -45,3 +45,29 @@
      {
          this.field_70180_af.func_187227_b(field_184801_a, Byte.valueOf(this.func_184797_a(((Byte)this.field_70180_af.func_187225_a(field_184801_a)).byteValue(), 16, p_181027_1_)));
          this.func_70105_a(0.5F, 1.975F);
+@@ -906,25 +906,21 @@
+         return this.field_175444_bi;
+     }
+ 
+-    @SideOnly(Side.CLIENT)
+     public Rotations func_175404_u()
+     {
+         return this.field_175438_bj;
+     }
+ 
+-    @SideOnly(Side.CLIENT)
+     public Rotations func_175411_v()
+     {
+         return this.field_175439_bk;
+     }
+ 
+-    @SideOnly(Side.CLIENT)
+     public Rotations func_175403_w()
+     {
+         return this.field_175440_bl;
+     }
+ 
+-    @SideOnly(Side.CLIENT)
+     public Rotations func_175407_x()
+     {
+         return this.field_175441_bm;
