@@ -1,5 +1,34 @@
 --- ../src-base/minecraft/net/minecraft/client/renderer/RenderGlobal.java
 +++ ../src-work/minecraft/net/minecraft/client/renderer/RenderGlobal.java
+@@ -102,10 +102,10 @@
+     private static final ResourceLocation field_175006_g = new ResourceLocation("textures/misc/forcefield.png");
+     private final Minecraft field_72777_q;
+     private final TextureManager field_72770_i;
+-    private final RenderManager field_175010_j;
+-    private WorldClient field_72769_h;
++    protected final RenderManager field_175010_j;
++    protected WorldClient field_72769_h;
+     private Set<RenderChunk> field_175009_l = Sets.<RenderChunk>newLinkedHashSet();
+-    private List<RenderGlobal.ContainerLocalRenderInformation> field_72755_R = Lists.<RenderGlobal.ContainerLocalRenderInformation>newArrayListWithCapacity(69696);
++    protected List<RenderGlobal.ContainerLocalRenderInformation> field_72755_R = Lists.<RenderGlobal.ContainerLocalRenderInformation>newArrayListWithCapacity(69696);
+     private final Set<TileEntity> field_181024_n = Sets.<TileEntity>newHashSet();
+     private ViewFrustum field_175008_n;
+     private int field_72772_v = -1;
+@@ -135,10 +135,10 @@
+     private ChunkRenderDispatcher field_174995_M;
+     private ChunkRenderContainer field_174996_N;
+     private int field_72739_F = -1;
+-    private int field_72740_G = 2;
+-    private int field_72748_H;
+-    private int field_72749_I;
+-    private int field_72750_J;
++    protected int field_72740_G = 2;
++    protected int field_72748_H;
++    protected int field_72749_I;
++    protected int field_72750_J;
+     private boolean field_175002_T;
+     private ClippingHelper field_175001_U;
+     private final Vector4f[] field_175004_V = new Vector4f[8];
 @@ -553,8 +553,10 @@
  
      public void func_180446_a(Entity p_180446_1_, ICamera p_180446_2_, float p_180446_3_)
@@ -137,3 +166,21 @@
                      this.field_72769_h.func_184156_a(p_180439_3_, soundtype.func_185845_c(), SoundCategory.BLOCKS, (soundtype.func_185843_a() + 1.0F) / 2.0F, soundtype.func_185847_b() * 0.8F, false);
                  }
  
+@@ -2530,14 +2556,14 @@
+     }
+ 
+     @SideOnly(Side.CLIENT)
+-    class ContainerLocalRenderInformation
++    protected class ContainerLocalRenderInformation
+     {
+-        final RenderChunk field_178036_a;
++        protected final RenderChunk field_178036_a;
+         final EnumFacing field_178034_b;
+         byte field_178035_c;
+         final int field_178032_d;
+ 
+-        private ContainerLocalRenderInformation(RenderChunk p_i46248_2_, EnumFacing p_i46248_3_, @Nullable int p_i46248_4_)
++        protected ContainerLocalRenderInformation(RenderChunk p_i46248_2_, EnumFacing p_i46248_3_, @Nullable int p_i46248_4_)
+         {
+             this.field_178036_a = p_i46248_2_;
+             this.field_178034_b = p_i46248_3_;
