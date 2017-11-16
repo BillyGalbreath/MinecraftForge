@@ -1,6 +1,6 @@
 --- ../src-base/minecraft/net/minecraft/client/renderer/RenderGlobal.java
 +++ ../src-work/minecraft/net/minecraft/client/renderer/RenderGlobal.java
-@@ -102,10 +102,10 @@
+@@ -102,11 +102,11 @@
      private static final ResourceLocation field_175006_g = new ResourceLocation("textures/misc/forcefield.png");
      private final Minecraft field_72777_q;
      private final TextureManager field_72770_i;
@@ -10,10 +10,27 @@
 +    protected WorldClient field_72769_h;
      private Set<RenderChunk> field_175009_l = Sets.<RenderChunk>newLinkedHashSet();
 -    private List<RenderGlobal.ContainerLocalRenderInformation> field_72755_R = Lists.<RenderGlobal.ContainerLocalRenderInformation>newArrayListWithCapacity(69696);
+-    private final Set<TileEntity> field_181024_n = Sets.<TileEntity>newHashSet();
 +    protected List<RenderGlobal.ContainerLocalRenderInformation> field_72755_R = Lists.<RenderGlobal.ContainerLocalRenderInformation>newArrayListWithCapacity(69696);
-     private final Set<TileEntity> field_181024_n = Sets.<TileEntity>newHashSet();
++    protected final Set<TileEntity> field_181024_n = Sets.<TileEntity>newHashSet();
      private ViewFrustum field_175008_n;
      private int field_72772_v = -1;
+     private int field_72771_w = -1;
+@@ -116,11 +116,11 @@
+     private VertexBuffer field_175012_t;
+     private VertexBuffer field_175011_u;
+     private int field_72773_u;
+-    private final Map<Integer, DestroyBlockProgress> field_72738_E = Maps.<Integer, DestroyBlockProgress>newHashMap();
++    protected final Map<Integer, DestroyBlockProgress> field_72738_E = Maps.<Integer, DestroyBlockProgress>newHashMap();
+     private final Map<BlockPos, ISound> field_147593_P = Maps.<BlockPos, ISound>newHashMap();
+     private final TextureAtlasSprite[] field_94141_F = new TextureAtlasSprite[10];
+-    private Framebuffer field_175015_z;
+-    private ShaderGroup field_174991_A;
++    protected Framebuffer field_175015_z;
++    protected ShaderGroup field_174991_A;
+     private double field_174992_B = Double.MIN_VALUE;
+     private double field_174993_C = Double.MIN_VALUE;
+     private double field_174987_D = Double.MIN_VALUE;
 @@ -135,10 +135,10 @@
      private ChunkRenderDispatcher field_174995_M;
      private ChunkRenderContainer field_174996_N;
@@ -29,6 +46,15 @@
      private boolean field_175002_T;
      private ClippingHelper field_175001_U;
      private final Vector4f[] field_175004_V = new Vector4f[8];
+@@ -149,7 +149,7 @@
+     private double field_147597_g;
+     private double field_147602_h;
+     private boolean field_147595_R = true;
+-    private boolean field_184386_ad;
++    protected boolean field_184386_ad;
+     private final Set<BlockPos> field_184387_ae = Sets.<BlockPos>newHashSet();
+ 
+     public RenderGlobal(Minecraft p_i1249_1_)
 @@ -553,8 +553,10 @@
  
      public void func_180446_a(Entity p_180446_1_, ICamera p_180446_2_, float p_180446_3_)
@@ -113,6 +139,15 @@
  
              this.func_180443_s();
  
+@@ -743,7 +758,7 @@
+         }
+     }
+ 
+-    private boolean func_184383_a(Entity p_184383_1_, Entity p_184383_2_, ICamera p_184383_3_)
++    public boolean func_184383_a(Entity p_184383_1_, Entity p_184383_2_, ICamera p_184383_3_)
+     {
+         boolean flag = p_184383_2_ instanceof EntityLivingBase && ((EntityLivingBase)p_184383_2_).func_70608_bn();
+ 
 @@ -951,7 +966,7 @@
                  BlockPos blockpos2 = renderchunk4.func_178568_j().func_177982_a(8, 8, 8);
                  boolean flag3 = blockpos2.func_177951_i(blockpos1) < 768.0D;
@@ -144,6 +179,24 @@
          if (this.field_72777_q.field_71441_e.field_73011_w.func_76569_d())
          {
              if (this.field_72777_q.field_71474_y.func_181147_e() == 2)
+@@ -1847,7 +1870,7 @@
+         }
+     }
+ 
+-    private void func_180443_s()
++    public void func_180443_s()
+     {
+         GlStateManager.func_187428_a(GlStateManager.SourceFactor.DST_COLOR, GlStateManager.DestFactor.SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+         GlStateManager.func_179147_l();
+@@ -1859,7 +1882,7 @@
+         GlStateManager.func_179094_E();
+     }
+ 
+-    private void func_174969_t()
++    public void func_174969_t()
+     {
+         GlStateManager.func_179118_c();
+         GlStateManager.func_179136_a(0.0F, 0.0F);
 @@ -1892,8 +1915,11 @@
                  double d7 = (double)blockpos.func_177956_o() - d4;
                  double d8 = (double)blockpos.func_177952_p() - d5;
@@ -174,7 +227,7 @@
 +    protected class ContainerLocalRenderInformation
      {
 -        final RenderChunk field_178036_a;
-+        protected final RenderChunk field_178036_a;
++        public final RenderChunk field_178036_a;
          final EnumFacing field_178034_b;
          byte field_178035_c;
          final int field_178032_d;
