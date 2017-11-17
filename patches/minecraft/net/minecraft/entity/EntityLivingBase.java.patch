@@ -410,3 +410,13 @@
      public boolean func_190631_cK()
      {
          return true;
+@@ -2861,4 +2961,9 @@
+     public void func_191987_a(BlockPos p_191987_1_, boolean p_191987_2_)
+     {
+     }
++
++    public boolean canBeTargetedBy(EntityLivingBase entityLivingBaseIn)
++    {
++        return true;
++    }
+ }
