@@ -6,13 +6,13 @@
      private final TextureManager field_72770_i;
 -    private final RenderManager field_175010_j;
 -    private WorldClient field_72769_h;
-+    protected final RenderManager field_175010_j;
-+    protected WorldClient field_72769_h;
++    public final RenderManager field_175010_j;
++    public WorldClient field_72769_h;
      private Set<RenderChunk> field_175009_l = Sets.<RenderChunk>newLinkedHashSet();
 -    private List<RenderGlobal.ContainerLocalRenderInformation> field_72755_R = Lists.<RenderGlobal.ContainerLocalRenderInformation>newArrayListWithCapacity(69696);
 -    private final Set<TileEntity> field_181024_n = Sets.<TileEntity>newHashSet();
-+    protected List<RenderGlobal.ContainerLocalRenderInformation> field_72755_R = Lists.<RenderGlobal.ContainerLocalRenderInformation>newArrayListWithCapacity(69696);
-+    protected final Set<TileEntity> field_181024_n = Sets.<TileEntity>newHashSet();
++    public List<RenderGlobal.ContainerLocalRenderInformation> field_72755_R = Lists.<RenderGlobal.ContainerLocalRenderInformation>newArrayListWithCapacity(69696);
++    public final Set<TileEntity> field_181024_n = Sets.<TileEntity>newHashSet();
      private ViewFrustum field_175008_n;
      private int field_72772_v = -1;
      private int field_72771_w = -1;
@@ -21,13 +21,13 @@
      private VertexBuffer field_175011_u;
      private int field_72773_u;
 -    private final Map<Integer, DestroyBlockProgress> field_72738_E = Maps.<Integer, DestroyBlockProgress>newHashMap();
-+    protected final Map<Integer, DestroyBlockProgress> field_72738_E = Maps.<Integer, DestroyBlockProgress>newHashMap();
++    public final Map<Integer, DestroyBlockProgress> field_72738_E = Maps.<Integer, DestroyBlockProgress>newHashMap();
      private final Map<BlockPos, ISound> field_147593_P = Maps.<BlockPos, ISound>newHashMap();
      private final TextureAtlasSprite[] field_94141_F = new TextureAtlasSprite[10];
 -    private Framebuffer field_175015_z;
 -    private ShaderGroup field_174991_A;
-+    protected Framebuffer field_175015_z;
-+    protected ShaderGroup field_174991_A;
++    public Framebuffer field_175015_z;
++    public ShaderGroup field_174991_A;
      private double field_174992_B = Double.MIN_VALUE;
      private double field_174993_C = Double.MIN_VALUE;
      private double field_174987_D = Double.MIN_VALUE;
@@ -39,10 +39,10 @@
 -    private int field_72748_H;
 -    private int field_72749_I;
 -    private int field_72750_J;
-+    protected int field_72740_G = 2;
-+    protected int field_72748_H;
-+    protected int field_72749_I;
-+    protected int field_72750_J;
++    public int field_72740_G = 2;
++    public int field_72748_H;
++    public int field_72749_I;
++    public int field_72750_J;
      private boolean field_175002_T;
      private ClippingHelper field_175001_U;
      private final Vector4f[] field_175004_V = new Vector4f[8];
@@ -51,10 +51,28 @@
      private double field_147602_h;
      private boolean field_147595_R = true;
 -    private boolean field_184386_ad;
-+    protected boolean field_184386_ad;
++    public boolean field_184386_ad;
      private final Set<BlockPos> field_184387_ae = Sets.<BlockPos>newHashSet();
  
      public RenderGlobal(Minecraft p_i1249_1_)
+@@ -245,7 +245,7 @@
+         }
+     }
+ 
+-    protected boolean func_174985_d()
++    public boolean func_174985_d()
+     {
+         return this.field_175015_z != null && this.field_174991_A != null && this.field_72777_q.field_71439_g != null;
+     }
+@@ -534,7 +534,7 @@
+         }
+     }
+ 
+-    protected void func_174986_e()
++    public void func_174986_e()
+     {
+         this.field_175009_l.clear();
+         this.field_174995_M.func_178514_b();
 @@ -553,8 +553,10 @@
  
      public void func_180446_a(Entity p_180446_1_, ICamera p_180446_2_, float p_180446_3_)
@@ -148,6 +166,15 @@
      {
          boolean flag = p_184383_2_ instanceof EntityLivingBase && ((EntityLivingBase)p_184383_2_).func_70608_bn();
  
+@@ -772,7 +787,7 @@
+         return String.format("C: %d/%d %sD: %d, L: %d, %s", j, i, this.field_72777_q.field_175612_E ? "(s) " : "", this.field_72739_F, this.field_184387_ae.size(), this.field_174995_M == null ? "null" : this.field_174995_M.func_178504_a());
+     }
+ 
+-    protected int func_184382_g()
++    public int func_184382_g()
+     {
+         int i = 0;
+ 
 @@ -951,7 +966,7 @@
                  BlockPos blockpos2 = renderchunk4.func_178568_j().func_177982_a(8, 8, 8);
                  boolean flag3 = blockpos2.func_177951_i(blockpos1) < 768.0D;
@@ -157,6 +184,15 @@
                  {
                      this.field_175009_l.add(renderchunk4);
                  }
+@@ -1038,7 +1053,7 @@
+         }
+     }
+ 
+-    protected Vector3f func_174962_a(Entity p_174962_1_, double p_174962_2_)
++    public Vector3f func_174962_a(Entity p_174962_1_, double p_174962_2_)
+     {
+         float f = (float)((double)p_174962_1_.field_70127_C + (double)(p_174962_1_.field_70125_A - p_174962_1_.field_70127_C) * p_174962_2_);
+         float f1 = (float)((double)p_174962_1_.field_70126_B + (double)(p_174962_1_.field_70177_z - p_174962_1_.field_70126_B) * p_174962_2_);
 @@ -1253,6 +1268,13 @@
  
      public void func_174976_a(float p_174976_1_, int p_174976_2_)
@@ -224,7 +260,7 @@
  
      @SideOnly(Side.CLIENT)
 -    class ContainerLocalRenderInformation
-+    protected class ContainerLocalRenderInformation
++    public class ContainerLocalRenderInformation
      {
 -        final RenderChunk field_178036_a;
 +        public final RenderChunk field_178036_a;
@@ -233,7 +269,7 @@
          final int field_178032_d;
  
 -        private ContainerLocalRenderInformation(RenderChunk p_i46248_2_, EnumFacing p_i46248_3_, @Nullable int p_i46248_4_)
-+        protected ContainerLocalRenderInformation(RenderChunk p_i46248_2_, EnumFacing p_i46248_3_, @Nullable int p_i46248_4_)
++        public ContainerLocalRenderInformation(RenderChunk p_i46248_2_, EnumFacing p_i46248_3_, @Nullable int p_i46248_4_)
          {
              this.field_178036_a = p_i46248_2_;
              this.field_178034_b = p_i46248_3_;
