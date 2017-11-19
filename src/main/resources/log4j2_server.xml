@@ -39,6 +39,7 @@
         </Routing>
     </Appenders>
     <Loggers>
+        <Logger level="OFF" name="net.dv8tion.jda" />
         <Logger level="info" name="com.mojang" additivity="false">
             <AppenderRef ref="Console" level="INFO" />
             <AppenderRef ref="File" />
