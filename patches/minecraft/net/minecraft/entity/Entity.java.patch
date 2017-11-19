@@ -82,6 +82,15 @@
              }
              else
              {
+@@ -1561,7 +1574,7 @@
+     }
+ 
+     @Nullable
+-    @SideOnly(Side.CLIENT)
++    //@SideOnly(Side.CLIENT)
+     public RayTraceResult func_174822_a(double p_174822_1_, float p_174822_3_)
+     {
+         Vec3d vec3d = this.func_174824_e(p_174822_3_);
 @@ -1707,6 +1720,7 @@
              {
                  p_189511_1_.func_74757_a("Glowing", this.field_184238_ar);
