@@ -26,6 +26,7 @@ import java.util.Random;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import net.minecraft.entity.monster.EntityZombieVillager;
+import net.minecraft.item.ItemStack;
 import org.apache.commons.lang3.Validate;
 
 import net.minecraft.entity.passive.EntityVillager;
@@ -376,11 +377,11 @@ public class VillagerRegistry
                 case 0: // farmer
                 case 4: // butcher
                 case 5: // nitwit
-                    return net.minecraft.init.Items.FEATHER.getDefaultInstance();
+                    return new ItemStack(net.minecraft.init.Items.FEATHER);
                 case 1: // librarian
                 case 2: // priest
                 case 3: // smith
-                    return net.minecraft.init.Items.HAT_PILGRIM.getDefaultInstance();
+                    return new ItemStack(net.minecraft.init.Items.HAT_PILGRIM);
             }
         }
         return net.minecraft.item.ItemStack.EMPTY;
