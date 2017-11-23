@@ -1,5 +1,14 @@
 --- ../src-base/minecraft/net/minecraft/client/entity/AbstractClientPlayer.java
 +++ ../src-work/minecraft/net/minecraft/client/entity/AbstractClientPlayer.java
+@@ -52,7 +52,7 @@
+     }
+ 
+     @Nullable
+-    protected NetworkPlayerInfo func_175155_b()
++    public NetworkPlayerInfo func_175155_b()
+     {
+         if (this.field_175157_a == null)
+         {
 @@ -152,6 +152,6 @@
              f *= 1.0F - f1 * 0.15F;
          }

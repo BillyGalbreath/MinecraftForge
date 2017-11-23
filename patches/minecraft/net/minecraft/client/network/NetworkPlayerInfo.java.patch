@@ -1,0 +1,11 @@
+--- ../src-base/minecraft/net/minecraft/client/network/NetworkPlayerInfo.java
++++ ../src-work/minecraft/net/minecraft/client/network/NetworkPlayerInfo.java
+@@ -22,7 +22,7 @@
+ public class NetworkPlayerInfo
+ {
+     private final GameProfile field_178867_a;
+-    Map<Type, ResourceLocation> field_187107_a = Maps.newEnumMap(Type.class);
++    public Map<Type, ResourceLocation> field_187107_a = Maps.newEnumMap(Type.class);
+     private GameType field_178866_b;
+     private int field_78829_b;
+     private boolean field_178864_d;
