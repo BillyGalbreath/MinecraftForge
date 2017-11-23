@@ -1,6 +1,6 @@
 --- ../src-base/minecraft/net/minecraft/item/crafting/ShapelessRecipes.java
 +++ ../src-work/minecraft/net/minecraft/item/crafting/ShapelessRecipes.java
-@@ -10,23 +10,25 @@
+@@ -10,28 +10,35 @@
  import net.minecraft.util.JsonUtils;
  import net.minecraft.util.NonNullList;
  import net.minecraft.world.World;
@@ -12,7 +12,8 @@
  {
      private final ItemStack field_77580_a;
      public final NonNullList<Ingredient> field_77579_b;
-     private final String field_194138_c;
+-    private final String field_194138_c;
++    private String field_194138_c;
 +    private final boolean isSimple;
  
      public ShapelessRecipes(String p_i47500_1_, ItemStack p_i47500_2_, NonNullList<Ingredient> p_i47500_3_)
@@ -30,7 +31,17 @@
      public String func_193358_e()
      {
          return this.field_194138_c;
-@@ -50,10 +52,7 @@
+     }
+ 
++    public void setGroup(String group)
++    {
++        this.field_194138_c = group;
++    }
++
+     public ItemStack func_77571_b()
+     {
+         return this.field_77580_a;
+@@ -50,10 +57,7 @@
          {
              ItemStack itemstack = p_179532_1_.func_70301_a(i);
  
@@ -42,7 +53,7 @@
          }
  
          return nonnulllist;
-@@ -61,7 +60,9 @@
+@@ -61,7 +65,9 @@
  
      public boolean func_77569_a(InventoryCrafting p_77569_1_, World p_77569_2_)
      {
@@ -53,7 +64,7 @@
  
          for (int i = 0; i < p_77569_1_.func_174923_h(); ++i)
          {
-@@ -71,27 +72,22 @@
+@@ -71,27 +77,22 @@
  
                  if (!itemstack.func_190926_b())
                  {
@@ -93,7 +104,7 @@
      }
  
      public ItemStack func_77572_b(InventoryCrafting p_77572_1_)
-@@ -136,7 +132,6 @@
+@@ -136,7 +137,6 @@
          return nonnulllist;
      }
  
