@@ -1,7 +1,11 @@
 --- ../src-base/minecraft/net/minecraft/client/renderer/entity/RenderLivingBase.java
 +++ ../src-work/minecraft/net/minecraft/client/renderer/entity/RenderLivingBase.java
-@@ -32,6 +32,9 @@
-     protected List<LayerRenderer<T>> field_177097_h = Lists.<LayerRenderer<T>>newArrayList();
+@@ -29,9 +29,12 @@
+     private static final DynamicTexture field_177096_e = new DynamicTexture(16, 16);
+     protected ModelBase field_77045_g;
+     protected FloatBuffer field_177095_g = GLAllocation.func_74529_h(4);
+-    protected List<LayerRenderer<T>> field_177097_h = Lists.<LayerRenderer<T>>newArrayList();
++    public List<LayerRenderer<T>> field_177097_h = Lists.<LayerRenderer<T>>newArrayList();
      protected boolean field_188323_j;
  
 +    public static float NAME_TAG_RANGE = 64.0f;
