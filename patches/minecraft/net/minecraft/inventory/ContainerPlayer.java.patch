@@ -9,7 +9,7 @@
                  }
                  public boolean func_82869_a(EntityPlayer p_82869_1_)
                  {
-@@ -81,6 +81,21 @@
+@@ -81,6 +81,28 @@
                  return "minecraft:items/empty_armor_slot_shield";
              }
          });
@@ -26,6 +26,13 @@
 +            public boolean func_75214_a(ItemStack stack)
 +            {
 +                return stack.func_77973_b() == net.minecraft.init.Items.field_179564_cE;
++            }
++
++            @Override
++            public void func_75218_e()
++            {
++                net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new net.pl3x.forge.event.BannerSlotChangedEvent(ContainerPlayer.this, this));
++                super.func_75218_e();
 +            }
 +        });
      }
