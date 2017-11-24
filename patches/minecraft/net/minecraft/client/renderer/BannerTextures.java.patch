@@ -1,0 +1,20 @@
+--- ../src-base/minecraft/net/minecraft/client/renderer/BannerTextures.java
++++ ../src-work/minecraft/net/minecraft/client/renderer/BannerTextures.java
+@@ -51,7 +51,7 @@
+ 
+                     if (bannertextures$cacheentry == null)
+                     {
+-                        if (this.field_187479_a.size() >= 256 && !this.func_187477_a())
++                        if (this.field_187479_a.size() >= 1024 && !this.func_187477_a())
+                         {
+                             return BannerTextures.field_187487_d;
+                         }
+@@ -92,7 +92,7 @@
+                     }
+                 }
+ 
+-                return this.field_187479_a.size() < 256;
++                return this.field_187479_a.size() < 1024;
+             }
+         }
+ 
