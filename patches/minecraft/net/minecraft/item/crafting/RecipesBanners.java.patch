@@ -14,6 +14,15 @@
          {
              public boolean func_77569_a(InventoryCrafting p_77569_1_, World p_77569_2_)
              {
+@@ -34,7 +32,7 @@
+                             return false;
+                         }
+ 
+-                        if (TileEntityBanner.func_175113_c(itemstack) >= 6)
++                        if (TileEntityBanner.func_175113_c(itemstack) >= 15)
+                         {
+                             return false;
+                         }
 @@ -79,9 +77,10 @@
                      {
                          ItemStack itemstack2 = p_77572_1_.func_70301_a(j);
