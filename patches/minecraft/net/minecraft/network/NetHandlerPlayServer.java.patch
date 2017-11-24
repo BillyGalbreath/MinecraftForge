@@ -60,6 +60,15 @@
                  {
                      this.field_147369_b.field_71135_a.func_147359_a(new SPacketConfirmTransaction(p_147351_1_.func_149548_c(), p_147351_1_.func_149547_f(), true));
                      this.field_147369_b.field_71137_h = true;
+@@ -1229,7 +1237,7 @@
+                 }
+             }
+ 
+-            boolean flag1 = p_147344_1_.func_149627_c() >= 1 && p_147344_1_.func_149627_c() <= 45;
++            boolean flag1 = p_147344_1_.func_149627_c() >= 1 && p_147344_1_.func_149627_c() <= 46;
+             boolean flag2 = itemstack.func_190926_b() || itemstack.func_77960_j() >= 0 && itemstack.func_190916_E() <= 64 && !itemstack.func_190926_b();
+ 
+             if (flag1 && flag2)
 @@ -1298,7 +1306,7 @@
  
              for (int i = 0; i < astring.length; ++i)

@@ -505,7 +505,7 @@
  
          if (this.func_70608_bn())
          {
-@@ -2421,6 +2543,173 @@
+@@ -2421,6 +2543,174 @@
          return this.field_71075_bZ.field_75098_d && this.func_70003_b(2, "");
      }
  
@@ -645,7 +645,8 @@
 +    private final net.minecraftforge.items.IItemHandler playerMainHandler = new net.minecraftforge.items.wrapper.PlayerMainInvWrapper(field_71071_by);
 +    private final net.minecraftforge.items.IItemHandler playerEquipmentHandler = new net.minecraftforge.items.wrapper.CombinedInvWrapper(
 +                    new net.minecraftforge.items.wrapper.PlayerArmorInvWrapper(field_71071_by),
-+                    new net.minecraftforge.items.wrapper.PlayerOffhandInvWrapper(field_71071_by));
++                    new net.minecraftforge.items.wrapper.PlayerOffhandInvWrapper(field_71071_by),
++                    new net.minecraftforge.items.wrapper.PlayerCapeInvWrapper(field_71071_by));
 +    private final net.minecraftforge.items.IItemHandler playerJoinedHandler = new net.minecraftforge.items.wrapper.PlayerInvWrapper(field_71071_by);
 +
 +    @SuppressWarnings("unchecked")

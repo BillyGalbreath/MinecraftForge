@@ -21,10 +21,11 @@ package net.minecraftforge.items.wrapper;
 
 import net.minecraft.entity.player.InventoryPlayer;
 
-public class PlayerInvWrapper extends CombinedInvWrapper
+public class PlayerCapeInvWrapper extends RangedWrapper
 {
-    public PlayerInvWrapper(InventoryPlayer inv)
+    public PlayerCapeInvWrapper(InventoryPlayer inv)
     {
-        super(new PlayerMainInvWrapper(inv), new PlayerArmorInvWrapper(inv), new PlayerOffhandInvWrapper(inv), new PlayerCapeInvWrapper(inv));
+        super(new InvWrapper(inv), inv.mainInventory.size() + inv.armorInventory.size()+ inv.capeInventory.size(),
+                inv.mainInventory.size() + inv.armorInventory.size() + inv.offHandInventory.size() + inv.capeInventory.size());
     }
 }

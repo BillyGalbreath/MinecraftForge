@@ -45,14 +45,14 @@
              }
          }
  
-+        for (int k = 0; k < this.capeInventory.size(); ++k)
++        for (int l = 0; l < this.capeInventory.size(); ++l)
 +        {
-+            if (!((ItemStack)this.capeInventory.get(k)).func_190926_b())
++            if (!((ItemStack)this.capeInventory.get(l)).func_190926_b())
 +            {
-+                NBTTagCompound nbttagcompound2 = new NBTTagCompound();
-+                nbttagcompound2.func_74774_a("Slot", (byte)(k + 200));
-+                ((ItemStack)this.capeInventory.get(k)).func_77955_b(nbttagcompound2);
-+                p_70442_1_.func_74742_a(nbttagcompound2);
++                NBTTagCompound nbttagcompound3 = new NBTTagCompound();
++                nbttagcompound3.func_74774_a("Slot", (byte)(l + 110));
++                ((ItemStack)this.capeInventory.get(l)).func_77955_b(nbttagcompound3);
++                p_70442_1_.func_74742_a(nbttagcompound3);
 +            }
 +        }
 +
@@ -71,9 +71,9 @@
                  {
                      this.field_184439_c.set(j - 150, itemstack);
                  }
-+                else if (j >= 200 && j < this.capeInventory.size() + 200)
++                else if (j >= 110 && j < this.capeInventory.size() + 110)
 +                {
-+                    this.capeInventory.set(j - 200, itemstack);
++                    this.capeInventory.set(j - 110, itemstack);
 +                }
              }
          }
