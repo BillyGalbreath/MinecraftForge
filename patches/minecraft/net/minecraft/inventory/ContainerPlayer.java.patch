@@ -9,3 +9,25 @@
                  }
                  public boolean func_82869_a(EntityPlayer p_82869_1_)
                  {
+@@ -81,6 +81,21 @@
+                 return "minecraft:items/empty_armor_slot_shield";
+             }
+         });
++        this.func_75146_a(new Slot(p_i1819_1_, 41, 77, 44)
++        {
++            @Nullable
++            @SideOnly(Side.CLIENT)
++            public String func_178171_c()
++            {
++                return "minecraft:items/empty_armor_slot_banner";
++            }
++
++            @Override
++            public boolean func_75214_a(ItemStack stack)
++            {
++                return stack.func_77973_b() == net.minecraft.init.Items.field_179564_cE;
++            }
++        });
+     }
+ 
+     public void func_75130_a(IInventory p_75130_1_)

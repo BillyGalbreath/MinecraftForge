@@ -1,6 +1,23 @@
 --- ../src-base/minecraft/net/minecraft/entity/player/InventoryPlayer.java
 +++ ../src-work/minecraft/net/minecraft/entity/player/InventoryPlayer.java
-@@ -292,7 +292,8 @@
+@@ -32,6 +32,7 @@
+     public final NonNullList<ItemStack> field_70462_a = NonNullList.<ItemStack>func_191197_a(36, ItemStack.field_190927_a);
+     public final NonNullList<ItemStack> field_70460_b = NonNullList.<ItemStack>func_191197_a(4, ItemStack.field_190927_a);
+     public final NonNullList<ItemStack> field_184439_c = NonNullList.<ItemStack>func_191197_a(1, ItemStack.field_190927_a);
++    public final NonNullList<ItemStack> capeInventory = NonNullList.<ItemStack>func_191197_a(1, ItemStack.field_190927_a);
+     private final List<NonNullList<ItemStack>> field_184440_g;
+     public int field_70461_c;
+     public EntityPlayer field_70458_d;
+@@ -40,7 +41,7 @@
+ 
+     public InventoryPlayer(EntityPlayer p_i1750_1_)
+     {
+-        this.field_184440_g = Arrays.<NonNullList<ItemStack>>asList(this.field_70462_a, this.field_70460_b, this.field_184439_c);
++        this.field_184440_g = Arrays.<NonNullList<ItemStack>>asList(this.field_70462_a, this.field_70460_b, this.field_184439_c, this.capeInventory);
+         this.field_70457_g = ItemStack.field_190927_a;
+         this.field_70458_d = p_i1750_1_;
+     }
+@@ -292,7 +293,8 @@
  
          if (itemstack.func_190926_b())
          {
@@ -10,7 +27,7 @@
  
              if (p_191973_2_.func_77942_o())
              {
-@@ -363,6 +364,13 @@
+@@ -363,6 +365,13 @@
                  }
              }
          }
@@ -24,3 +41,63 @@
      }
  
      public boolean func_70441_a(ItemStack p_70441_1_)
+@@ -613,6 +622,17 @@
+             }
+         }
+ 
++        for (int k = 0; k < this.capeInventory.size(); ++k)
++        {
++            if (!((ItemStack)this.capeInventory.get(k)).func_190926_b())
++            {
++                NBTTagCompound nbttagcompound2 = new NBTTagCompound();
++                nbttagcompound2.func_74774_a("Slot", (byte)(k + 200));
++                ((ItemStack)this.capeInventory.get(k)).func_77955_b(nbttagcompound2);
++                p_70442_1_.func_74742_a(nbttagcompound2);
++            }
++        }
++
+         return p_70442_1_;
+     }
+ 
+@@ -621,6 +641,7 @@
+         this.field_70462_a.clear();
+         this.field_70460_b.clear();
+         this.field_184439_c.clear();
++        this.capeInventory.clear();
+ 
+         for (int i = 0; i < p_70443_1_.func_74745_c(); ++i)
+         {
+@@ -642,13 +663,17 @@
+                 {
+                     this.field_184439_c.set(j - 150, itemstack);
+                 }
++                else if (j >= 200 && j < this.capeInventory.size() + 200)
++                {
++                    this.capeInventory.set(j - 200, itemstack);
++                }
+             }
+         }
+     }
+ 
+     public int func_70302_i_()
+     {
+-        return this.field_70462_a.size() + this.field_70460_b.size() + this.field_184439_c.size();
++        return this.field_70462_a.size() + this.field_70460_b.size() + this.field_184439_c.size() + this.capeInventory.size();
+     }
+ 
+     public boolean func_191420_l()
+@@ -677,6 +702,14 @@
+             }
+         }
+ 
++        for (ItemStack itemstack2 : this.capeInventory)
++        {
++            if (!itemstack2.func_190926_b())
++            {
++                return false;
++            }
++        }
++
+         return true;
+     }
+ 
