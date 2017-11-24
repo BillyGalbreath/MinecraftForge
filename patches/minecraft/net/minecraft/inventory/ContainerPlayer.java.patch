@@ -31,7 +31,7 @@
 +            @Override
 +            public void func_75218_e()
 +            {
-+                net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new net.pl3x.forge.event.BannerSlotChangedEvent(ContainerPlayer.this, this));
++                net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new net.pl3x.forge.event.BannerSlotChangedEvent(ContainerPlayer.this, this, field_82862_h));
 +                super.func_75218_e();
 +            }
 +        });
