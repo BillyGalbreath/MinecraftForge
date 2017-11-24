@@ -461,7 +461,30 @@
      }
  
      protected void func_71061_d_()
-@@ -2176,7 +2286,10 @@
+@@ -2047,6 +2157,10 @@
+         {
+             return this.field_71071_by.field_184439_c.get(0);
+         }
++        else if (p_184582_1_ == EntityEquipmentSlot.CAPE)
++        {
++            return this.field_71071_by.capeInventory.get(0);
++        }
+         else
+         {
+             return p_184582_1_.func_188453_a() == EntityEquipmentSlot.Type.ARMOR ? (ItemStack)this.field_71071_by.field_70460_b.get(p_184582_1_.func_188454_b()) : ItemStack.field_190927_a;
+@@ -2065,6 +2179,11 @@
+             this.func_184606_a_(p_184201_2_);
+             this.field_71071_by.field_184439_c.set(0, p_184201_2_);
+         }
++        else if (p_184201_1_ == EntityEquipmentSlot.CAPE)
++        {
++            this.func_184606_a_(p_184201_2_);
++            this.field_71071_by.capeInventory.set(0, p_184201_2_);
++        }
+         else if (p_184201_1_.func_188453_a() == EntityEquipmentSlot.Type.ARMOR)
+         {
+             this.func_184606_a_(p_184201_2_);
+@@ -2176,7 +2295,10 @@
  
      public ITextComponent func_145748_c_()
      {
@@ -473,7 +496,7 @@
          itextcomponent.func_150256_b().func_150241_a(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/msg " + this.func_70005_c_() + " "));
          itextcomponent.func_150256_b().func_150209_a(this.func_174823_aP());
          itextcomponent.func_150256_b().func_179989_a(this.func_70005_c_());
-@@ -2185,7 +2298,7 @@
+@@ -2185,7 +2307,7 @@
  
      public float func_70047_e()
      {
@@ -482,7 +505,7 @@
  
          if (this.func_70608_bn())
          {
-@@ -2421,6 +2534,173 @@
+@@ -2421,6 +2543,173 @@
          return this.field_71075_bZ.field_75098_d && this.func_70003_b(2, "");
      }
  
