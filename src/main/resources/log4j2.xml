@@ -38,6 +38,7 @@
     </Appenders>
     <Loggers>
         <Logger level="OFF" name="net.dv8tion.jda" />
+        <Logger level="OFF" name="deps.net.dv8tion.jda" />
         <Logger level="info" name="com.mojang" additivity="false">
             <AppenderRef ref="SysOut" level="INFO" />
             <AppenderRef ref="File" />
