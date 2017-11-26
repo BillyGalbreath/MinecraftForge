@@ -56,14 +56,11 @@ public class ForgeVersion
     //This number is incremented every minecraft release, never reset
     public static final int minorVersion    = 23;
     //This number is incremented every time a interface changes or new major feature is added, and reset every Minecraft version
-    public static final int revisionVersion = 0;
+    public static final int revisionVersion = 1;
     //This number is updated every time we manually merge Forge from upstream
-    public static final int buildVersion    = 2552;
+    public static final int buildVersion    = 2554;
     //This number is incremented every time Jenkins builds Pl3xForge, and never reset. Should always be 0 in the repo code.
     public static final int pl3xVersion    = 0;
-    public static final int revisionVersion = 1;
-    //This number is incremented every time Jenkins builds Forge, and never reset. Should always be 0 in the repo code.
-    public static final int buildVersion    = 0;
     // This is the minecraft version we're building for - used in various places in Forge/FML code
     public static final String mcVersion = "1.12.2";
     // This is the MCP data version we're using
