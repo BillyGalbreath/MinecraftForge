@@ -108,7 +108,7 @@ public class ShapelessOreRecipe extends IForgeRegistryEntry.Impl<IRecipe> implem
             {
                 ++ingredientCount;
                 if (this.isSimple)
-                    recipeItemHelper.accountStack(itemstack);
+                    recipeItemHelper.accountStack(itemstack, 1);
                 else
                     items.add(itemstack);
             }

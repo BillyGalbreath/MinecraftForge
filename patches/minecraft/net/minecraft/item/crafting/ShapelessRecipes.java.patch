@@ -86,7 +86,7 @@
 -                    }
 +                    ++ingredientCount;
 +                    if (this.isSimple)
-+                        recipeItemHelper.func_194112_a(itemstack);
++                        recipeItemHelper.accountStack(itemstack, 1);
 +                    else
 +                        inputs.add(itemstack);
                  }

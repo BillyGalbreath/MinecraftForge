@@ -21,16 +21,23 @@ package net.minecraftforge.event.entity.player;
 
 import net.minecraft.advancements.Advancement;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.Cancelable;
 
 /**
- * When an advancement is granted to a player.
+ * This event is fired when a player gets an advancement.
+ * <br>
+ * This event is not {@link Cancelable}.<br>
+ * <br>
+ * This event does not have a result. {@link HasResult}<br>
+ * <br>
+ * This event is fired on the {@link MinecraftForge#EVENT_BUS}.
  */
-public class AdvancementGrantEvent extends PlayerEvent
+public class AdvancementEvent extends PlayerEvent
 {
     private final Advancement advancement;
 
-    public AdvancementGrantEvent(EntityPlayer player, Advancement advancement)
+    public AdvancementEvent(EntityPlayer player, Advancement advancement)
     {
         super(player);
         this.advancement = advancement;
@@ -39,22 +46,5 @@ public class AdvancementGrantEvent extends PlayerEvent
     public Advancement getAdvancement()
     {
         return advancement;
-    }
-
-    @Cancelable
-    public static class Pre extends AdvancementGrantEvent
-    {
-        public Pre(EntityPlayer player, Advancement advancement)
-        {
-            super(player, advancement);
-        }
-    }
-
-    public static class Post extends AdvancementGrantEvent
-    {
-        public Post(EntityPlayer player, Advancement advancement)
-        {
-            super(player, advancement);
-        }
     }
 }
